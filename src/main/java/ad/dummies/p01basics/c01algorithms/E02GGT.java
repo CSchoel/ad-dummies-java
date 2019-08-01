@@ -10,7 +10,7 @@ public class E02GGT {
 
     public static int ggt3(int n, int m) {
         int t = 1;
-        for(int x = 2; x < Math.min(n, m); x++) {
+        for(int x = 2; x <= Math.min(n, m); x++) {
             if(isDivisor(x, m) && isDivisor(x, n)) {
                 t = x;
             }
