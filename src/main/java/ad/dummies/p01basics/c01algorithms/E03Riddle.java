@@ -6,6 +6,7 @@ public class E03Riddle {
         int y = m;
         int p = 0;
         while (x >= 1) {
+            assert n * m == x * y + p; // loop invariant
             if (x % 2 == 0) {
                 x = x / 2;
             } else {
