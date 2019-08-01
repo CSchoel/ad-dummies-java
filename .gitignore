@@ -7,3 +7,4 @@ build
 
 # IntelliJ project files
 .idea
+out
