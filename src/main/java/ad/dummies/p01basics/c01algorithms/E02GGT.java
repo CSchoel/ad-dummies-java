@@ -6,9 +6,8 @@ public class E02GGT {
     public static int ggt2(int n, int m) {
         if (n == 0) { return m; }
         if (m == 0) { return n; }
-        if (n == 1 || m == 1) { return 1; }
         return IntStream.range(2, Math.min(n, m) + 1)
-                .filter(x -> n % x == 0 && m % x == 0).max().orElse(0);
+                .filter(x -> n % x == 0 && m % x == 0).max().orElse(1);
     }
 
     public static int ggt3(int n, int m) {
