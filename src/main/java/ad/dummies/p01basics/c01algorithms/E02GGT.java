@@ -22,7 +22,7 @@ public class E02GGT {
         return t;
     }
 
-    public static boolean isDivisor(int x, int z) {
+    private static boolean isDivisor(int x, int z) {
         while (z > 0) {
             z -= x;
         }
