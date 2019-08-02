@@ -18,8 +18,8 @@ public class E01Weight {
         return true;
     }
 
-    public static int minWeight2(int[] people) {
-        int m = 1;
+    public static int minWeight2(double[] people) {
+        int m = 0;
         for (int i = 1; i < people.length; i++) {
             if (people[i] < people[m]) {
                 m = i;
