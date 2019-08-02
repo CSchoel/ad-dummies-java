@@ -7,7 +7,7 @@ public class E01Weight {
                 return i;
             }
         }
-        return Integer.MAX_VALUE; // if array is empty
+        return -1; // if array is empty
     }
     private static boolean isLightest(int i, double[] people) {
         for (int j = 0; j < people.length; j++) {
