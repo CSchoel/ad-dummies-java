@@ -17,15 +17,40 @@ repositories {
     jcenter()
 }
 
+
+sourceSets.create("jmh") {
+    java.setSrcDirs(listOf("src/jmh/java"))
+    compileClasspath += sourceSets["test"].runtimeClasspath
+    runtimeClasspath += sourceSets["test"].runtimeClasspath
+}
+
 dependencies {
     // Use JUnit Jupiter API for testing.
     testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
 
     // Use JUnit Jupiter Engine for testing.
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+
+    "jmhImplementation"(project)
+    "jmhImplementation"("org.openjdk.jmh:jmh-core:1.21")
+    "jmhAnnotationProcessor"("org.openjdk.jmh:jmh-generator-annprocess:1.21")
 }
 
 val test by tasks.getting(Test::class) {
     // Use junit platform for unit tests
     useJUnitPlatform()
 }
+
+// https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
+tasks {
+    register("jmh", type=JavaExec::class) {
+        dependsOn("jmhClasses")
+        main = "org.openjdk.jmh.Main"
+        classpath = sourceSets["jmh"].compileClasspath + sourceSets["jmh"].runtimeClasspath
+        // To enable the built-in stacktrace sampling profiler
+        // args = ['-prof', 'stack']
+        //args?.add(".*")
+    }
+}
+
+tasks["classes"].finalizedBy("jmhClasses")
