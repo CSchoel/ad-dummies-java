@@ -20,8 +20,6 @@ repositories {
 
 sourceSets.create("jmh") {
     java.setSrcDirs(listOf("src/jmh/java"))
-    compileClasspath += sourceSets["test"].runtimeClasspath
-    runtimeClasspath += sourceSets["test"].runtimeClasspath
 }
 
 dependencies {
@@ -44,13 +42,13 @@ val test by tasks.getting(Test::class) {
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
 tasks {
     register("jmh", type=JavaExec::class) {
+        group = "benchmark"
         dependsOn("jmhClasses")
         main = "org.openjdk.jmh.Main"
-        classpath = sourceSets["jmh"].compileClasspath + sourceSets["jmh"].runtimeClasspath
+        classpath = sourceSets["jmh"].runtimeClasspath
         // To enable the built-in stacktrace sampling profiler
-        // args = ['-prof', 'stack']
-        //args?.add(".*")
+        // args(listOf("-prof", "stack"))
+        //args(listOf("-h"))
+        args(listOf("-i", "1", "-r", "100ms", "-wi", "1", "-w", "100ms"))
     }
 }
-
-tasks["classes"].finalizedBy("jmhClasses")
