@@ -19,7 +19,21 @@ public class E02GGT {
         return t;
     }
 
-    public static int ggt2(int n, int m) {
+    public static int ggt2a(int n, int m) {
+        // FIXME: book assumes n > 0 and m > 0
+        if (n == 0) { return m; }
+        if (m == 0) { return n; }
+        int t = 1;
+        for(int x = 2; x <= Math.min(m, n); x++) {
+            if (n % x == 0 && m % x == 0) {
+                t = x;
+            }
+        }
+        return t;
+    }
+
+    public static int ggt2b(int n, int m) {
+        // FIXME: book assumes n > 0 and m > 0
         if (n == 0) { return m; }
         if (m == 0) { return n; }
         return IntStream.range(2, Math.min(n, m) + 1)

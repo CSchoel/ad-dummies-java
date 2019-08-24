@@ -35,8 +35,13 @@ public class E02GGTTest {
     }
 
     @Test
-    public void testGGT2() {
-        testGGT(E02GGT::ggt2);
+    public void testGGT2a() {
+        testGGT(E02GGT::ggt2a);
+    }
+
+    @Test
+    public void testGGT2b() {
+        testGGT(E02GGT::ggt2b);
     }
 
     @Test
