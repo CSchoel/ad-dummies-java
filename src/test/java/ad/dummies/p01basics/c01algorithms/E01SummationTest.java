@@ -7,7 +7,7 @@ import java.util.function.Function;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class E01SummationTest {
-    public void testSummation(Function<Integer, Integer> sum, int maxInput, int maxValue) {
+    public void summation(Function<Integer, Integer> sum, int maxInput, int maxValue) {
         assertEquals(0, sum.apply(0));
         assertEquals(1, sum.apply(1));
         assertEquals(3, sum.apply(2));
@@ -32,22 +32,22 @@ public class E01SummationTest {
     }
 
     @Test
-    public void testSummation1() {
-        testSummation(E01Summation::summation1, 65535, 2147450880);
+    public void summation1() {
+        summation(E01Summation::summation1, 65535, 2147450880);
     }
 
     @Test
-    public void testSummation1Highest() {
+    public void summation1Highest() {
         assertEquals(65535, findHighestInput(E01Summation::summation1));
     }
 
     @Test
-    public void testSummation2() {
-        testSummation(E01Summation::summation2, 46340, 1073720970);
+    public void summation2() {
+        summation(E01Summation::summation2, 46340, 1073720970);
     }
 
     @Test
-    public void testSummation2Highest() {
+    public void summation2Highest() {
         assertEquals(46340, findHighestInput(E01Summation::summation2));
     }
 }

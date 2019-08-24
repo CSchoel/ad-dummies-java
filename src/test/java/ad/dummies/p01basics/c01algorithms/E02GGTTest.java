@@ -11,7 +11,7 @@ import java.util.function.BiFunction;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class E02GGTTest {
-    public void testGGT(BiFunction<Integer, Integer, Integer> ggt) {
+    public void ggt(BiFunction<Integer, Integer, Integer> ggt) {
         assertEquals(0, ggt.apply(0, 0));
         assertEquals(4, ggt.apply(0, 4));
         assertEquals(4, ggt.apply(4, 0));
@@ -26,7 +26,7 @@ public class E02GGTTest {
     }
 
     @Test
-    public void testGGT1() {
+    public void ggt1() {
         // assert that ggt1(6, 15) does not complete within 1 ms
         Executable timeout = () -> assertTimeoutPreemptively(Duration.ofMillis(1), () -> {
             E02GGT.ggt1(BigInteger.valueOf(6), BigInteger.valueOf(15));
@@ -35,17 +35,17 @@ public class E02GGTTest {
     }
 
     @Test
-    public void testGGT2a() {
-        testGGT(E02GGT::ggt2a);
+    public void ggt2a() {
+        ggt(E02GGT::ggt2a);
     }
 
     @Test
-    public void testGGT2b() {
-        testGGT(E02GGT::ggt2b);
+    public void ggt2b() {
+        ggt(E02GGT::ggt2b);
     }
 
     @Test
-    public void testGGT3() {
-        testGGT(E02GGT::ggt3);
+    public void ggt3() {
+        ggt(E02GGT::ggt3);
     }
 }

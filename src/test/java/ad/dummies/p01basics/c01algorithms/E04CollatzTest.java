@@ -33,7 +33,7 @@ public class E04CollatzTest {
     }
 
     @Test
-    public void testCollatz25() {
+    public void collatz25() {
         E04Collatz.collatz(25);
         assertEquals(
                 List.of(
@@ -45,7 +45,7 @@ public class E04CollatzTest {
     }
 
     @Test
-    public void testCollatz27() {
+    public void collatz27() {
         E04Collatz.collatz(27);
         assertEquals(112, output.size());
         // FIXME error in the book (9323 instead of 9232)
@@ -53,7 +53,7 @@ public class E04CollatzTest {
     }
 
     @Test
-    public void testCollatz32() {
+    public void collatz32() {
         E04Collatz.collatz(32);
         assertEquals(List.of(32, 16, 8, 4, 2, 1), output);
     }

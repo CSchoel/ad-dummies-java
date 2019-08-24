@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class E03RiddleTest {
     @Test
-    public void testRiddle() {
+    public void riddle() {
         assertEquals( 1 , E03Riddle.riddle(1, 1));
         assertEquals( 5 , E03Riddle.riddle(1, 5));
         assertEquals( 5 , E03Riddle.riddle(5, 1));
@@ -25,7 +25,7 @@ public class E03RiddleTest {
     }
 
     @Test
-    public void testRiddleLoop() {
+    public void riddleLoop() {
         Random r = new Random();
         for(int i = 0; i < 1000; ++i) {
             int x = r.nextInt(Short.MAX_VALUE);
