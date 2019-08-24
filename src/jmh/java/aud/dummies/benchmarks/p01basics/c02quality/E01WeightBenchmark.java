@@ -3,26 +3,28 @@ package aud.dummies.benchmarks.p01basics.c02quality;
 import ad.dummies.p01basics.c02quality.E01Weight;
 import org.openjdk.jmh.annotations.*;
 
-import java.util.Random;
+import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Fork(1) // execute each benchmark on it's own JVM
-@Warmup(iterations = 4, time = 1)
-@Measurement(iterations = 5, time = 1) // how many measurement iterations?
+@Warmup(iterations = 2, time = 100, timeUnit = TimeUnit.MILLISECONDS)
+@Measurement(iterations = 5, time = 100, timeUnit = TimeUnit.MILLISECONDS)
 public class E01WeightBenchmark {
 
     @State(Scope.Thread)
     public static class WeightSetup {
-        @Param({"10", "100", "1000", "10000", "100000"})
+        @Param({"10", "100", "1000", "10000"})
         private int length;
         private double[] weights;
 
         @Setup
         public void setup() {
             // TODO: proper worst case
-            weights = new Random().doubles().limit(length).toArray();
+            weights = new double[length];
+            Arrays.fill(weights, 80);
+            weights[length - 1] = 75;
         }
     }
 
