@@ -1,8 +1,24 @@
 package ad.dummies.p01basics.c01algorithms;
 
+import java.math.BigInteger;
 import java.util.stream.IntStream;
 
 public class E02GGT {
+    // NOTE: to achieve true infinite loop, we need BigIntegers
+    public static BigInteger ggt1(BigInteger n, BigInteger m) {
+        BigInteger t = BigInteger.ONE;
+        for(
+                BigInteger x = BigInteger.ONE;
+                x.compareTo(BigInteger.ONE) >= 0;
+                x = x.add(BigInteger.ONE)
+        ) {
+            if (BigInteger.ZERO.equals(n.mod(x)) && BigInteger.ZERO.equals(m.mod(x))) {
+                t = x;
+            }
+        }
+        return t;
+    }
+
     public static int ggt2(int n, int m) {
         if (n == 0) { return m; }
         if (m == 0) { return n; }
