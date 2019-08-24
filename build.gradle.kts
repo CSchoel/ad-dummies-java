@@ -75,13 +75,12 @@ tasks {
                 ?.stream()
                 ?.map{x -> numbersToRegex(x)}
                 ?.toArray()
-                ?.joinToString(" ")
         if (benchmarks != null) {
-            args(listOf(benchmarks))
+            args(benchmarks.toMutableList())
         }
         // To enable the built-in stacktrace sampling profiler
         // args(listOf("-prof", "stack"))
-        // args(listOf("-h"))
+        //args(listOf("-h"))
         //args(listOf("-i", "1", "-r", "100ms", "-wi", "1", "-w", "100ms"))
     }
 }
