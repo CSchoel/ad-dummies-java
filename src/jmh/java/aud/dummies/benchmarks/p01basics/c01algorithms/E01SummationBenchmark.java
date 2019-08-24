@@ -8,7 +8,7 @@ import java.util.concurrent.TimeUnit;
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
 @Fork(1) // execute each benchmark on it's own JVM
-@Warmup(iterations = 3, time = 10, timeUnit = TimeUnit.MILLISECONDS)
+@Warmup(iterations = 2, time = 10, timeUnit = TimeUnit.MILLISECONDS)
 @Measurement(iterations = 5, time = 10, timeUnit = TimeUnit.MILLISECONDS)
 public class E01SummationBenchmark {
 
