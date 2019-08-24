@@ -39,9 +39,22 @@ val test by tasks.getting(Test::class) {
     useJUnitPlatform()
 }
 
+fun numbersToRegex(numbers: String): String {
+    val numberArray = numbers.split(".")
+    var regex = ""
+    regex += "p${numberArray[0].padStart(2, '0')}.*"
+    if (numberArray.size > 1) {
+        regex += "c${numberArray[1].padStart(2, '0')}.*"
+    }
+    if (numberArray.size > 2) {
+        regex += "E${numberArray[2].padStart(2, '0')}.*"
+    }
+    return regex
+}
+
 // https://docs.gradle.org/current/dsl/org.gradle.api.tasks.JavaExec.html
 tasks {
-    register("jmh", type=JavaExec::class) {
+    register("jmhVerify", type=JavaExec::class) {
         group = "benchmark"
         dependsOn("jmhClasses")
         main = "org.openjdk.jmh.Main"
@@ -49,6 +62,26 @@ tasks {
         // To enable the built-in stacktrace sampling profiler
         // args(listOf("-prof", "stack"))
         //args(listOf("-h"))
-        args(listOf("-i", "1", "-r", "100ms", "-wi", "1", "-w", "100ms"))
+        args(listOf("-i", "1", "-r", "1ms", "-wi", "1", "-w", "1ms"))
+    }
+    register("jmh", type=JavaExec::class) {
+        group = "benchmark"
+        dependsOn("jmhClasses")
+        main = "org.openjdk.jmh.Main"
+        classpath = sourceSets["jmh"].runtimeClasspath
+        val benchmarks = project.findProperty("benchmarks")
+                ?.toString()
+                ?.split(",")
+                ?.stream()
+                ?.map{x -> numbersToRegex(x)}
+                ?.toArray()
+                ?.joinToString(" ")
+        if (benchmarks != null) {
+            args(listOf(benchmarks))
+        }
+        // To enable the built-in stacktrace sampling profiler
+        // args(listOf("-prof", "stack"))
+        // args(listOf("-h"))
+        //args(listOf("-i", "1", "-r", "100ms", "-wi", "1", "-w", "100ms"))
     }
 }
