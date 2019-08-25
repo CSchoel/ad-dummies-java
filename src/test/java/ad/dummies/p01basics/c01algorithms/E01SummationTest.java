@@ -1,25 +1,15 @@
 package ad.dummies.p01basics.c01algorithms;
 
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.CsvSource;
 
 import java.util.function.Function;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class E01SummationTest {
-    public void summation(Function<Integer, Integer> sum, int maxInput, int maxValue) {
-        assertEquals(0, sum.apply(0));
-        assertEquals(1, sum.apply(1));
-        assertEquals(3, sum.apply(2));
-        assertEquals(6, sum.apply(3));
-        assertEquals(10, sum.apply(4));
-        assertEquals(15, sum.apply(5));
-        assertEquals(21, sum.apply(6));
-        assertEquals(28, sum.apply(7));
-        assertEquals(300, sum.apply(24));
-        // highest input possible that will not lead to integer overflow
-        assertEquals(maxValue, sum.apply(maxInput));
-    }
 
     public int findHighestInput(Function<Integer, Integer> sum) {
         int highestInput = 0;
@@ -31,23 +21,43 @@ public class E01SummationTest {
         return highestInput;
     }
 
-    @Test
-    public void summation1() {
-        summation(E01Summation::summation1, 65535, 2147450880);
+    @CsvSource({
+            "0,0", "1,1", "3,2", "6,3", "10,4", "15,5", "21,6", "28,7",
+            "300, 24"
+    })
+    @ParameterizedTest(name = "input:{1}")
+    public void summation1(int expected, int input) {
+        assertEquals(expected, E01Summation.summation1(input));
     }
 
     @Test
-    public void summation1Highest() {
+    public void summation1maxValue() {
+        // highest input possible that will not lead to integer overflow
+        assertEquals(2147450880, E01Summation.summation1(65535));
+    }
+
+    @Test
+    public void summation1maxInput() {
         assertEquals(65535, findHighestInput(E01Summation::summation1));
     }
 
-    @Test
-    public void summation2() {
-        summation(E01Summation::summation2, 46340, 1073720970);
+    @CsvSource({
+            "0,0", "1,1", "3,2", "6,3", "10,4", "15,5", "21,6", "28,7",
+            "300, 24"
+    })
+    @ParameterizedTest(name = "input:{1}")
+    public void summation2(int expected, int input) {
+        assertEquals(expected, E01Summation.summation2(input));
     }
 
     @Test
-    public void summation2Highest() {
+    public void summation2maxValue() {
+        // highest input possible that will not lead to integer overflow
+        assertEquals(1073720970, E01Summation.summation1(46340));
+    }
+
+    @Test
+    public void summation2maxInput() {
         assertEquals(46340, findHighestInput(E01Summation::summation2));
     }
 }
