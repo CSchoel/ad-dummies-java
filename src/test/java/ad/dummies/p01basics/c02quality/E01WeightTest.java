@@ -1,9 +1,12 @@
 package ad.dummies.p01basics.c02quality;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 public class E01WeightTest {
 
     @Test
