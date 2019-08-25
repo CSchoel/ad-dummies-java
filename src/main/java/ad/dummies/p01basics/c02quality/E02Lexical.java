@@ -21,6 +21,8 @@ public class E02Lexical {
             }
         }
         // s1 and s2 are equal up to min(s1.length(), s2.length())
+        assert s1.substring(0, Math.min(s1.length(), s2.length()))
+                .equals(s2.substring(0, Math.min(s1.length(), s2.length())));
         return (s1.length() < s2.length());
     }
 }
