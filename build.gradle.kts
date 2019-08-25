@@ -24,10 +24,11 @@ sourceSets.create("jmh") {
 
 dependencies {
     // Use JUnit Jupiter API for testing.
-    testImplementation("org.junit.jupiter:junit-jupiter-api:5.4.2")
+    testImplementation("org.junit.jupiter:junit-jupiter-api:5.5.1")
+    testImplementation("org.junit.jupiter:junit-jupiter-params:5.5.1")
 
     // Use JUnit Jupiter Engine for testing.
-    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.4.2")
+    testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine:5.5.1")
 
     "jmhImplementation"(project)
     "jmhImplementation"("org.openjdk.jmh:jmh-core:1.21")
