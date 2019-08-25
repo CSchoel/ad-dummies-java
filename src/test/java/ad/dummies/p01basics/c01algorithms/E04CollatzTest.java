@@ -22,7 +22,7 @@ public class E04CollatzTest {
         System.setOut(new PrintStream(System.out){
             @Override
             public void println(int x) {
-                super.println(x);
+                //super.println(x);
                 output.add(x);
             }
         });
