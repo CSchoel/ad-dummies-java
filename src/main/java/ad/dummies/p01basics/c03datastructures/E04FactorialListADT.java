@@ -1,12 +1,8 @@
 package ad.dummies.p01basics.c03datastructures;
 
 public class E04FactorialListADT {
-    public interface FactorialList<T> {
-        int listSum3();
-    }
-    public static class Nil implements FactorialList {
-        public int listSum3() { return 0; }
-    }
+    public interface FactorialList { }
+    public static class Nil implements FactorialList { }
     public static class Cons implements FactorialList {
         private final int value;
         private final FactorialList next;
@@ -21,59 +17,17 @@ public class E04FactorialListADT {
         public FactorialList next() {
             return next;
         }
-
-        // more elegant object oriented version
-
-        public int listSum3() {
-            return value + next.listSum3();
-        }
     }
 
-    // clunky "pattern matching" versions of list sums
-
-    public static int listSum1(FactorialList lst) {
-        int s = 0;
-        while (!(lst instanceof Nil)) {
-            Cons lstc = (Cons) lst;
-            s += lstc.value();
-            lst = lstc.next();
+    public static FactorialList fList(int n) {
+        FactorialList l = new Nil();
+        for (int i = 0; i <= n; i++) {
+            l = new Cons(f(i), l);
         }
-        return s;
+        return l;
     }
 
-    // would be possible if https://openjdk.java.net/jeps/8213076 was
-    // implemented in java
-    /*
-    public static int listSum2(FactorialList lst) {
-        int s = 0;
-        while (!(lst instanceof Nil)) {
-            switch(lst) {
-                case Cons c -> {
-                    s += c.value();
-                    lst = c.next();
-                }
-            }
-        }
-        return s;
-    }*/
-
-    public static int listSum3(FactorialList lst) {
-        if (lst instanceof Nil) {
-            return 0;
-        } else {
-            Cons lstc = (Cons) lst;
-            return lstc.value() + listSum3(lstc.next());
-        }
+    public static int f(int x) {
+        return x == 0 ? 1 : x * f(x - 1);
     }
-
-    // future version assuming https://openjdk.java.net/jeps/8213076 was implemented
-
-    /*
-    public static int listSum3(FactorialList<int> lst) {
-        return switch(lst) {
-            case Nil<int> n -> 0;
-            case Cons<int> c ->  c.value() + listSum3(c.next());
-        };
-    }
-    */
 }
