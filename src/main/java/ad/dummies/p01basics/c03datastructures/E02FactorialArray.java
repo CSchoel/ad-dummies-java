@@ -30,9 +30,9 @@ public class E02FactorialArray {
     }
 
     public static IntTuple[] fArray2(int n) {
-        IntTuple[] a = new IntTuple[n];
+        IntTuple[] a = new IntTuple[n+1];
         a[0] = new IntTuple(0, 1);
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             a[i] = new IntTuple(i, a[i-1].v2() * i); // FIXME: book uses t[] instead of a[]
         }
         return a;
@@ -48,9 +48,9 @@ public class E02FactorialArray {
     }
 
     public static FactRecord[] fArray3(int n) {
-        FactRecord[] a = new FactRecord[n];
+        FactRecord[] a = new FactRecord[n+1];
         a[0] = new FactRecord(0, 1);
-        for (int i = 0; i < n; i++) {
+        for (int i = 1; i <= n; i++) {
             a[i] = new FactRecord(i, a[i-1].f * i);
         }
         return a;
