@@ -19,4 +19,18 @@ public class E03FactorialList {
         }
         return l;
     }
+
+    public static FactList fListAE(int n) {
+        FactList a = null;
+        FactList e = null;
+        // FIXME: if-expression in loop in book is unnecessarily complicated
+        a = new FactList(1, null);
+        e = a;
+        for(int i = 1; i <= n; i++) {
+            FactList t = new FactList(e.v * i, null);
+            e.n = t;
+            e = t;
+        }
+        return a;
+    }
 }
