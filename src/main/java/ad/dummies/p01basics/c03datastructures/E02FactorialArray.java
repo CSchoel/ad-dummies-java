@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E01FactorialArray {
+public class E02FactorialArray {
 
     // TODO case variants are not possible, because java has no pattern matching
     // TODO it may become possible with http://openjdk.java.net/jeps/305, but that is not likely without dedicated data classes

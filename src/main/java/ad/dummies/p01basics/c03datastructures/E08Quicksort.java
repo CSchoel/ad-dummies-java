@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E07Quicksort {
+public class E08Quicksort {
     public interface IntList {
         IntList append(IntList other);
         IntList quicksort();

@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E03FactorialListADT {
+public class E04FactorialListADT {
     public interface FactorialList<T> {
         int listSum3();
     }

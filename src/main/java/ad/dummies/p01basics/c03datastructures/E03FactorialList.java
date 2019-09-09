@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E02FactorialList {
+public class E03FactorialList {
     public static class FactList {
         public int v;
         public FactList n;

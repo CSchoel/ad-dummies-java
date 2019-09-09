@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E06StructuralRecursion {
+public class E07StructuralRecursion {
     public interface IntList {
         int listSum();
         IntList insSort();

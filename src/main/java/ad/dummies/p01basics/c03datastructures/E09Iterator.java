@@ -2,7 +2,7 @@ package ad.dummies.p01basics.c03datastructures;
 
 import java.util.Iterator;
 
-public class E08Iterator {
+public class E09Iterator {
     public interface IntList extends Iterable<Integer> {}
     public static class Nil implements IntList {
         @Override
