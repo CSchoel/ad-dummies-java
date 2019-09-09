@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E06FactorialRec {
+public class E07FactorialRec {
     public static long fRec(int n) {
         if (n == 0) { return 1; }
         return fRec(n - 1) * n;

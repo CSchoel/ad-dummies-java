@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E05GGT {
+public class E06GGT {
     public static int GGTRec(int m, int n) {
         if (m == n) {
             return n;
