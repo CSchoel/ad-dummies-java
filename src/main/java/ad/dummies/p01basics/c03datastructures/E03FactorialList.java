@@ -14,8 +14,9 @@ public class E03FactorialList {
         FactList l = null;
         int f = 1;
         for(int i = 1; i <= n; i++) {
-            l = new FactList(f, l);
+            // FIXME: book manipulates f after l => last value is missing
             f = f * i;
+            l = new FactList(f, l);
         }
         return l;
     }
