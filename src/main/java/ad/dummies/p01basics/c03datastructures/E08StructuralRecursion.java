@@ -1,6 +1,9 @@
 package ad.dummies.p01basics.c03datastructures;
 
 public class E08StructuralRecursion {
+    /* Note: Since has no pattern matching features, we use an object oriented
+    * approach that achieves the same recursive call structure. */
+
     public interface IntList {
         int listSum();
         IntList insSort();
@@ -44,28 +47,28 @@ public class E08StructuralRecursion {
         IntList treeToList();
     }
     public static class Leaf implements IntTree {
-        public int treeSum() { return 0; }
+        private final int value;
+        public Leaf(int value) { this.value = value; }
+        public int value() { return value; }
+        public int treeSum() { return value; }
         public IntList treeToList() {
-            return new Nil();
+            return new Cons(value, new Nil());
         }
     }
     public static class Node implements IntTree {
-        private final int value;
         private final IntTree left;
         private final IntTree right;
-        public Node(int value, IntTree right, IntTree left) {
-            this.value = value;
+        public Node(IntTree left, IntTree right) {
             this.right = right;
             this.left = left;
         }
-        public int value() { return value; }
         public IntTree left() { return left; }
         public IntTree right() { return right; }
         public int treeSum() {
-            return value + left.treeSum() + right.treeSum();
+            return left.treeSum() + right.treeSum();
         }
         public IntList treeToList() {
-            return left.treeToList().append(new Cons(value, left.treeToList()));
+            return left.treeToList().append(right.treeToList());
         }
     }
 }
