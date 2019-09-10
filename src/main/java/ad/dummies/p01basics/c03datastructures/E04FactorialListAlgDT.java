@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E04FactorialListADT {
+public class E04FactorialListAlgDT {
     public interface FactorialList { }
     public static class Nil implements FactorialList { }
     public static class Cons implements FactorialList {

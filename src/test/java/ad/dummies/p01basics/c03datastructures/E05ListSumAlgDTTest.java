@@ -5,11 +5,11 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import static ad.dummies.p01basics.c03datastructures.E05ListSumADT.*;
+import static ad.dummies.p01basics.c03datastructures.E05ListSumAlgDT.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
-public class E05ListSumADTtest {
+public class E05ListSumAlgDTTest {
 
     private IntList lstZero;
 
@@ -26,22 +26,22 @@ public class E05ListSumADTtest {
 
     @Test
     public void listSumNil() {
-        assertEquals(0, E05ListSumADT.listSum(lstZero));
+        assertEquals(0, E05ListSumAlgDT.listSum(lstZero));
     }
 
     @Test
     public void listSumFive() {
-        assertEquals(8, E05ListSumADT.listSum(lstFive));
+        assertEquals(8, E05ListSumAlgDT.listSum(lstFive));
     }
 
     @Test
     public void listSumRnil() {
-        assertEquals(0, E05ListSumADT.listSumR(lstZero));
+        assertEquals(0, E05ListSumAlgDT.listSumR(lstZero));
     }
 
     @Test
     public void listSumRfive() {
-        assertEquals(8, E05ListSumADT.listSumR(lstFive));
+        assertEquals(8, E05ListSumAlgDT.listSumR(lstFive));
     }
 
     @Test

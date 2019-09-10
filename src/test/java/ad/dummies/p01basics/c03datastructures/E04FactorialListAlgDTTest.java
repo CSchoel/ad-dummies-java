@@ -4,12 +4,12 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import static ad.dummies.p01basics.c03datastructures.E04FactorialListADT.*;
+import static ad.dummies.p01basics.c03datastructures.E04FactorialListAlgDT.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
-class E04FactorialListADTTest {
+class E04FactorialListAlgDTTest {
 
     @Test
     void fListZero() {

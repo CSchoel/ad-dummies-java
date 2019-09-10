@@ -1,6 +1,6 @@
 package ad.dummies.p01basics.c03datastructures;
 
-public class E05ListSumADT {
+public class E05ListSumAlgDT {
     public interface IntList {
         int listSumR();
     }
