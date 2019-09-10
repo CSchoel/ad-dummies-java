@@ -53,8 +53,8 @@ public class E07FactorialRec {
 
     public static long fIter2(int n) {
         NList accList = new Nil();
-        for (;n != 0;n--) {
-            accList = new Cons(n, accList);
+        for (int currentN = n; currentN != 0; currentN--) {
+            accList = new Cons(currentN, accList);
         }
         long accFact = 1;
         NList rev = accList;
