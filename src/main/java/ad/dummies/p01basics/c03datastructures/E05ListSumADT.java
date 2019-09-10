@@ -1,7 +1,7 @@
 package ad.dummies.p01basics.c03datastructures;
 
 public class E05ListSumADT {
-    public interface IntList<T> {
+    public interface IntList {
         int listSum3();
     }
     public static class Nil implements IntList {
@@ -69,10 +69,10 @@ public class E05ListSumADT {
     // future version assuming https://openjdk.java.net/jeps/8213076 was implemented
 
     /*
-    public static int listSum3(IntList<int> lst) {
+    public static int listSum3(IntList lst) {
         return switch(lst) {
-            case Nil<int> n -> 0;
-            case Cons<int> c ->  c.value() + listSum3(c.next());
+            case Nil n -> 0;
+            case Cons c ->  c.value() + listSum3(c.next());
         };
     }
     */
