@@ -2,10 +2,10 @@ package ad.dummies.p01basics.c03datastructures;
 
 public class E05ListSumADT {
     public interface IntList {
-        int listSum3();
+        int listSumR();
     }
     public static class Nil implements IntList {
-        public int listSum3() { return 0; }
+        public int listSumR() { return 0; }
     }
     public static class Cons implements IntList {
         private final int value;
@@ -24,14 +24,14 @@ public class E05ListSumADT {
 
         // more elegant object oriented version
 
-        public int listSum3() {
-            return value + next.listSum3();
+        public int listSumR() {
+            return value + next.listSumR();
         }
     }
 
     // clunky "pattern matching" versions of list sums
 
-    public static int listSum1(IntList lst) {
+    public static int listSum(IntList lst) {
         int s = 0;
         while (!(lst instanceof Nil)) {
             Cons lstc = (Cons) lst;
@@ -57,12 +57,12 @@ public class E05ListSumADT {
         return s;
     }*/
 
-    public static int listSum3(IntList lst) {
+    public static int listSumR(IntList lst) {
         if (lst instanceof Nil) {
             return 0;
         } else {
             Cons lstc = (Cons) lst;
-            return lstc.value() + listSum3(lstc.next());
+            return lstc.value() + listSumR(lstc.next());
         }
     }
 
