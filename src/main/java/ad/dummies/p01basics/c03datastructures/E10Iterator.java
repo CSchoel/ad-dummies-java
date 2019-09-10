@@ -1,13 +1,20 @@
 package ad.dummies.p01basics.c03datastructures;
 
 import java.util.Iterator;
+import java.util.function.BiFunction;
 
 public class E10Iterator {
-    public interface IntList extends Iterable<Integer> {}
+    public interface IntList extends Iterable<Integer> {
+        <R> R traverseWith(BiFunction<? super Integer, R, R> f, R start);
+    }
     public static class Nil implements IntList {
         @Override
         public Iterator<Integer> iterator() {
             return new IntListIterator(this);
+        }
+
+        public <R> R traverseWith(BiFunction<? super Integer, R, R> f, R start) {
+            return start;
         }
     }
     public static class Cons implements IntList {
@@ -23,6 +30,11 @@ public class E10Iterator {
         @Override
         public Iterator<Integer> iterator() {
             return new IntListIterator(this);
+        }
+
+        @Override
+        public <R> R traverseWith(BiFunction<? super Integer, R, R> f, R start) {
+            return f.apply(value, next.traverseWith(f, start));
         }
     }
     public static class IntListIterator implements Iterator<Integer> {
@@ -44,7 +56,11 @@ public class E10Iterator {
             return tmp;
         }
     }
-    public static int listSum(IntList lst) {
+    public static int listSumInner(IntList lst) {
+        return lst.traverseWith(Integer::sum, 0);
+    }
+
+    public static int listSumOuter(IntList lst) {
         int s = 0;
         for(int x: lst) { // foreach is possible, because IntList is Iterable
             s += x;
