@@ -1,0 +1,7 @@
+language: java
+install: true
+dist: xenial
+jdk: openjdk12
+
+script:
+  - ./gradlew build --scan -s
