@@ -1,4 +1,4 @@
-# Java reference implementation for "Algorithms and data structures for dummies"
+# Java reference implementations for "Algorithms and data structures for dummies"
 
 [German Readme](README.md)
 
