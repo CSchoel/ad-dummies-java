@@ -1,4 +1,4 @@
-package aud.dummies.benchmarks.p01basics.c02quality;
+package ad.dummies.p01basics.c02quality;
 
 import ad.dummies.p01basics.c02quality.E01Weight;
 import org.openjdk.jmh.annotations.*;

@@ -1,4 +1,4 @@
-package aud.dummies.benchmarks.p01basics.c01algorithms;
+package ad.dummies.p01basics.c01algorithms;
 
 import ad.dummies.p01basics.c01algorithms.E01Summation;
 import org.openjdk.jmh.annotations.*;
