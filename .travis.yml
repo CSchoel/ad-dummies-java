@@ -4,4 +4,4 @@ dist: xenial
 jdk: openjdk12
 
 script:
-  - ./gradlew build --scan -s
+  - ./gradlew build
