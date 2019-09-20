@@ -23,6 +23,12 @@ In einer echten Anwendung sollte man natürlich bis auf sehr wenige Ausnahmen je
 Der gesamte Code ist inklusive der Kommentare in Englisch geschrieben.
 Ich bin persönlich der Ansicht, dass das Lernen von Englisch zum Lernen von Informatik mit dazugehört.
 
+## Abweichungen vom Buch
+
+An ein paar Stellen weicht die Implementierung in diesem Repository von dem Pseudocode im Buch ab.
+Das ist entweder dann der Fall, wenn es in Java nicht die richtigen Features gibt, um das Beispiel exakt umzusetzen, oder wenn es im Buch einen kleinen Fehler oder eine Ungenauigkeit gab.
+Letztere Fälle sind im Code mit einem `FIXME` in einem Kommentar markiert und dürfen gerne als Schuldeingeständnis des Fachkorrektors gesehen werden. 😉
+
 ## Tests
 
 Neben dem Quellcode im Ordner `src/main/java` gibt es auch Unittests im Ordner `src/test/java`.

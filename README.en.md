@@ -20,6 +20,12 @@ This of course leads to duplicated code, but hopefully it also facilitates under
 For this reason additional classes, which are for instance required for the realization of data structures, are always implemented as inner classes of the example.
 In a real application one should of course (barring very few exceptions) write each class into its own source file.
 
+## Deviations from the book
+
+In some details the implementation in this repository deviates from the pseudo code in the book.
+This is the case wherever Java lacks the features to realize the example exactly or when there is a small error or inaccuracy in the book.
+The latter cases are marked with a `FIXME` in a comment and may well be seen as guilty plea of the proof reader.
+
 ## Tests
 
 Additional to the source code in the folder `src/main/java` there are also unit tests in the folder `src/test/java`.
