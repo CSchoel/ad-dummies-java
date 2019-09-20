@@ -1,5 +1,8 @@
 # Java reference implementations for "Algorithms and data structures for dummies"
 
+[![Build Status](https://travis-ci.com/CSchoel/ad-dummies-java.svg?branch=master)](https://travis-ci.com/CSchoel/ad-dummies-java)
+[![codecov](https://codecov.io/gh/CSchoel/ad-dummies-java/branch/master/graph/badge.svg)](https://codecov.io/gh/CSchoel/ad-dummies-java)
+
 [German Readme](README.md)
 
 This repository contains reference implementations of all algorithms and data structures in the book ["Algorithms and Data Structures for Dummies"](https://www.wiley-vch.de/de/fachgebiete/computer-und-informatik/algorithmen-und-datenstrukturen-fuer-dummies-978-3-527-71432-2) (only available in German).
