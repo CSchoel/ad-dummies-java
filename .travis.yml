@@ -9,6 +9,6 @@ install: true
 
 script:
   - ./gradlew jacocoTestReport
-  - codecov
+  - bash <(curl -s https://codecov.io/bash)
 
 #after_success:
