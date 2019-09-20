@@ -9,6 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     `java-library`
+    `jacoco`
 }
 
 repositories {
@@ -84,4 +85,12 @@ tasks {
         //args(listOf("-h"))
         //args(listOf("-i", "1", "-r", "100ms", "-wi", "1", "-w", "100ms"))
     }
+}
+
+val jacocoTestReport by tasks.getting(JacocoReport::class) {
+    reports {
+        xml.setEnabled(true)
+        html.setEnabled(false)
+    }
+    dependsOn(test)
 }

@@ -1,7 +1,14 @@
 language: java
-install: true
 dist: xenial
 jdk: openjdk12
 
+env:
+  secure: eRkzEzsLmOkW57hZMnEhcHE+Eq8vH4vjDIjeBbjONv62NC+u5W3y71Kyc91lQoVx43dUsrb+AwJ+iHTaP96lSDbi1p2ayDZDlILQ1+tLI2V3s44bcKEYVhNXMoFNBkukgyLVQGjqBaV5+Qsvn8Mb7fFAaI0L8IYY8I8CmFhDI9Dage/6qOLX+9Ghtr6ltJfqRuQjgFUWcV3VtNmMGnsaSKlPlfc/vceE5A1fXDCY2b9uIqb+Z4m6AZbBKzFCJUU+/lc3fO/LQOsdCT/Nt96LzaHiY2RcVm8OwBBlxOCLclde8+Kk4KATOk2AvmPBMS4ta3grqW3i+KxDLZxs8xkrWn7sPtYtlSnt6jy7JpjV11EDuvR8D+pgW1Sur3GEyniENRQNGWCJ7FSRxCpNljcrKgFmSgVRi8fOhsfzSKcTT2HCApZ2Dzt0tTCrTzgBUXKLjIvfHwjQhPEUqpy3vMwWFpVGiTdsrt0STM7zkSMe0z910/aQGkYeMvokwaleDsNPuI9EuSAVJ4Id5A9ZSPjQR60E2MQXV01RQXo1MEp6KDsAk2q0cgqw8lzvm2RIBi96olKGZ3uNBZ57+iV9uHxE0oO1d6X03LtTnUoqi4VyuERyh79bvwtlB4Pqm8hPYKkfxr9FGT/3Op/scXXPIxl8bvDOlJ6bEIZks2D3B3aPXDQ=
+
+install: true
+
 script:
-  - ./gradlew build
+  - ./gradlew jacocoTestReports
+
+after_success:
+  - codecov
