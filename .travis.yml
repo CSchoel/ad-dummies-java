@@ -8,7 +8,7 @@ env:
 install: true
 
 script:
-  - ./gradlew jacocoTestReports
+  - ./gradlew jacocoTestReport
 
 after_success:
   - codecov
