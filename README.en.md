@@ -24,7 +24,7 @@ In a real application one should of course (barring very few exceptions) write e
 
 In some details the implementation in this repository deviates from the pseudo code in the book.
 This is the case wherever Java lacks the features to realize the example exactly or when there is a small error or inaccuracy in the book.
-The latter cases are marked with a `FIXME` in a comment and may well be seen as guilty plea of the proof reader.
+The latter cases are marked with a `FIXME` in a comment and may well be seen as guilty plea of the proof reader. 😉
 
 ## Tests
 
