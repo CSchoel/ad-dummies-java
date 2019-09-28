@@ -1,5 +1,6 @@
 package ad.dummies.p02datastructures.c05trees;
 
+import java.util.Iterator;
 import java.util.function.Consumer;
 
 public class E02DepthFirstTraversal {
@@ -119,7 +120,42 @@ public class E02DepthFirstTraversal {
             return false;
         }
     }
-    public static abstract class BinTree {
+
+    public static class BinTreeIterator implements Iterator<Integer> {
+        private Stack<Node> stack;
+        private BinTree tree;
+        private BinTree current;
+
+        public BinTreeIterator(BinTree tree) {
+            stack = new EmptyStack<>();
+            this.tree = tree;
+        }
+
+        @Override
+        public boolean hasNext() {
+            // FIXME: error in the book
+            // wrong: t = not(tree = Empty and stack = Nil)
+            // correct: not(t = Empty and stack = Nil)
+            return current instanceof Node || !stack.isEmpty();
+        }
+
+        @Override
+        public Integer next() {
+            assert hasNext();
+            while (current instanceof Node) {
+                Node currentNode = (Node) current;
+                stack = stack.push(currentNode);
+                tree = currentNode.left;
+            }
+            ValueAndStack<Node> top = stack.pop();
+            int nextValue = top.value.value;
+            stack = top.stack;
+            tree = top.value.right;
+            return null;
+        }
+    }
+
+    public static abstract class BinTree implements Iterable<Integer> {
         public abstract ImmutableLinkedList preorder();
         public abstract ImmutableLinkedList inorder();
         public abstract void inorderProcess(Consumer<Integer> consumer);
@@ -189,6 +225,11 @@ public class E02DepthFirstTraversal {
                 }
             }
         }
+
+        @Override
+        public Iterator<Integer> iterator() {
+            return new BinTreeIterator(this);
+        }
     }
     public static class Empty extends BinTree {
         @Override
@@ -219,6 +260,11 @@ public class E02DepthFirstTraversal {
         @Override
         protected void inorderStack1(Stack<Node> stack, Consumer<Integer> consumer) {
             processStack(stack, consumer);
+        }
+
+        @Override
+        public Iterator<Integer> iterator() {
+            return new BinTreeIterator(this);
         }
     }
 }
