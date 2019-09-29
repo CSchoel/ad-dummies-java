@@ -1,5 +1,9 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import com.sun.source.tree.Tree;
+
+import java.util.function.Function;
+
 public class E08StructuralRecursion {
     /* Note: Since has no pattern matching features, we use an object oriented
     * approach that achieves the same recursive call structure. */
@@ -70,5 +74,47 @@ public class E08StructuralRecursion {
         public IntList treeToList() {
             return left.treeToList().append(right.treeToList());
         }
+    }
+
+    public static void main(String[] args) {
+        Function<IntList, String> lToS = lst -> {
+            StringBuilder sb = new StringBuilder("");
+            int n = 0;
+            while(lst instanceof Cons) {
+                Cons lstCons = (Cons) lst;
+                sb.append("Cons("+lstCons.value+", ");
+                n++;
+                lst = lstCons.next;
+            }
+            sb.append(" Nil");
+            for(int i = 0; i < n; i++) { sb.append(")"); }
+            return sb.toString();
+        };
+        IntList lst = new Nil();
+        int x = 4;
+        System.out.printf("%s.insert(%d) = %s\n", lToS.apply(lst), x, lToS.apply(lst.insert(x)));
+        lst = new Cons(8, new Cons(-2, new Cons(17, new Nil())));
+        System.out.printf("%s.listSum() = %d\n", lToS.apply(lst), lst.listSum());
+        lst = new Cons(8, new Cons(-2, new Nil()));
+        IntList lst2 = new Cons(17, new Cons(0, new Nil()));
+        System.out.printf("%s.append(%s) = %s\n", lToS.apply(lst), lToS.apply(lst2), lToS.apply(lst.append(lst2)));
+        lst = lst.append(lst2);
+        System.out.printf("%s.insSort() = %s\n", lToS.apply(lst), lToS.apply(lst.insSort()));
+        System.out.println();
+
+        class TreeString {
+            IntTree t;
+            public TreeString(IntTree t) {
+                this.t = t;
+            }
+            public String toString() {
+                if (t instanceof Leaf) { return "Leaf("+((Leaf) t).value+")"; }
+                Node tNode = (Node) t;
+                return "Node(" + new TreeString(tNode.left) + ", " + new TreeString(tNode.right) + ")";
+            }
+        }
+        IntTree tree = new Node(new Node(new Node(new Leaf(1), new Leaf(2)), new Leaf(3)), new Node(new Leaf(4), new Leaf(5)));
+        System.out.printf("%s.treeSum() = %d\n", new TreeString(tree), tree.treeSum());
+        System.out.printf("%s.treeToList() = %s\n", new TreeString(tree), lToS.apply(tree.treeToList()));
     }
 }

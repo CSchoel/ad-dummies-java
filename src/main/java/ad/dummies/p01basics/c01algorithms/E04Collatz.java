@@ -12,4 +12,8 @@ public class E04Collatz {
         }
         System.out.println(n); // always 1
     }
+
+    public static void main(String[] args) {
+        collatz(25);
+    }
 }

@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import java.util.Arrays;
+
 public class E09Quicksort {
     public interface IntList {
         IntList append(IntList other);
@@ -46,5 +48,19 @@ public class E09Quicksort {
             }
             return next.greater(x);
         }
+    }
+
+    public static void main(String[] args) {
+        int[] ar = {5, 4, 3, 2, 1};
+        IntList lst = new Nil();
+        for(int x: ar) { lst = new Cons(x, lst); }
+        IntList sorted = lst.quicksort();
+        int[] sortedAr = new int[ar.length];
+        for(int i = 0; i < sortedAr.length; i++) {
+            Cons cons = (Cons) lst;
+            sortedAr[i] = cons.value();
+            lst = cons.next();
+        }
+        System.out.printf("%s.quicksort() = %s\n", Arrays.toString(ar), Arrays.toString(sortedAr));
     }
 }

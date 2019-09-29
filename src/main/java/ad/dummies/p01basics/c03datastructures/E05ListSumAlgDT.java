@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import java.util.Arrays;
+
 public class E05ListSumAlgDT {
     public interface IntList {
         int listSumR();
@@ -76,4 +78,13 @@ public class E05ListSumAlgDT {
         };
     }
     */
+
+    public static void main(String[] args) {
+        int[] values = {4, -1, -8};
+        IntList lst = new Nil();
+        for(int v: values) { lst = new Cons(v, lst); }
+        System.out.printf("  listSum(%s) = %d\n", Arrays.toString(values), listSum(lst));
+        System.out.printf(" listSumR(%s) = %d\n", Arrays.toString(values), listSumR(lst));
+        System.out.printf("%s.listSumR() = %d\n", Arrays.toString(values), lst.listSumR());
+    }
 }

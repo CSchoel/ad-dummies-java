@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c02quality;
 
+import java.util.Arrays;
+
 public class E02Lexical {
     public static String lexicalFirst(String[] words) {
         assert words.length > 0;
@@ -24,5 +26,10 @@ public class E02Lexical {
         assert s1.substring(0, Math.min(s1.length(), s2.length()))
                 .equals(s2.substring(0, Math.min(s1.length(), s2.length())));
         return (s1.length() < s2.length());
+    }
+
+    public static void main(String[] args) {
+        String[] words = {"ba", "aa", "ab", "aaa"};
+        System.out.printf("lexicalFirst(%s) = %s\n", Arrays.toString(words), lexicalFirst(words));
     }
 }

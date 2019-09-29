@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import java.text.MessageFormat;
+
 public class E07FactorialRec {
     public static long fRec(int n) {
         if (n == 0) { return 1; }
@@ -64,5 +66,14 @@ public class E07FactorialRec {
             rev = revc.next();
         }
         return accFact;
+    }
+
+    public static void main(String[] args) {
+        int n = 4;
+        System.out.printf("     fRec(%d) = %d\n", n, fRec(n));
+        System.out.printf(" fTailRec(%d) = %d\n", n, fTailRec(n));
+        System.out.printf("    fIter(%d) = %d\n", n, fIter(n));
+        System.out.printf("fTailRec2(%d) = %d\n", n, fTailRec2(n));
+        System.out.printf("   fIter2(%d) = %d\n", n, fIter2(n));
     }
 }

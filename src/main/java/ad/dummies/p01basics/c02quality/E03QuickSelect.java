@@ -18,4 +18,10 @@ public class E03QuickSelect {
             return quickSelect(data_gt, k - count_leq);
         }
     }
+
+    public static void main(String[] args) {
+        double[] ar = {1.7, -1.2, 1.8, 3.7, -2.8};
+        int k = 3;
+        System.out.printf("quickSelect(%s, %d) = %s\n", Arrays.toString(ar), 3, quickSelect(ar, k));
+    }
 }

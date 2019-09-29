@@ -58,4 +58,12 @@ public class E02GGT {
         }
         return z == 0;
     }
+
+    public static void main(String[] args) {
+        int n = 18;
+        int m = 30;
+        System.out.printf("ggt2a(%d, %d) = %d\n", n, m, ggt2a(n, m));
+        System.out.printf("ggt2b(%d, %d) = %d\n", n, m, ggt2b(n, m));
+        System.out.printf(" ggt3(%d, %d) = %d\n", n, m, ggt3(n, m));
+    }
 }

@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import java.util.Arrays;
+
 public class E01Lexical {
     public static String lexicalFirst(String[] words) {
         assert words.length > 0;
@@ -33,5 +35,10 @@ public class E01Lexical {
         }
         // FIXME: book version does not consider sequences of different lengths
         return true;
+    }
+
+    public static void main(String[] args) {
+        String[] words = {"ba", "aa", "ab", "aaa"};
+        System.out.printf("lexicalFirst(%s) = %s\n", Arrays.toString(words), lexicalFirst(words));
     }
 }

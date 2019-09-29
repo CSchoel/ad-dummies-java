@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import java.util.function.Function;
+
 public class E03FactorialList {
     public static class FactList {
         public int v;
@@ -33,5 +35,21 @@ public class E03FactorialList {
             e = t;
         }
         return a;
+    }
+
+    public static void main(String[] args) {
+        Function<FactList, String> toS = lst -> {
+            StringBuilder sb = new StringBuilder("[");
+            while(lst != null) {
+                sb.append(lst.v);
+                lst = lst.n;
+                if (lst != null) { sb.append(", "); }
+            }
+            sb.append("]");
+            return sb.toString();
+        };
+        int n = 4;
+        System.out.printf("  fList(%d) = %s\n", n, toS.apply(fList(n)));
+        System.out.printf("fListAE(%d) = %s\n", n, toS.apply(fListAE(n)));
     }
 }

@@ -17,4 +17,10 @@ public class E03Riddle {
         }
         return p;
     }
+
+    public static void main(String[] args) {
+        int n = 9;
+        int m = 7;
+        System.out.printf("riddle(%d,%d) = %d\n", n ,m , riddle(n, m));
+    }
 }

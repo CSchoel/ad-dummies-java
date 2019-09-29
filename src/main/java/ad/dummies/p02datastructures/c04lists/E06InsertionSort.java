@@ -149,14 +149,10 @@ public class E06InsertionSort {
     }
 
     public static void main(String[] args) {
-        int[] a = {1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13};
-        long x = 0;
+        int[] a = {1, 2, 3};
         for(Iterator<int[]> permIter = new PermutationIterator(a); permIter.hasNext();) {
             int[] perm = permIter.next();
-            if (perm[0] == 7) x++;
-            //System.out.println(Arrays.toString(perm));
+            System.out.println(Arrays.toString(perm));
         }
-        System.out.println(x);
-        System.out.println(PermutationIterator.bigFac(12));
     }
 }

@@ -1,5 +1,7 @@
 package ad.dummies.p01basics.c02quality;
 
+import java.util.Arrays;
+
 public class E01Weight {
     public static int minWeight1(double[] people) {
         for (int i = 0; i < people.length; i++) {
@@ -26,5 +28,11 @@ public class E01Weight {
             }
         }
         return m;
+    }
+
+    public static void main(String[] args) {
+        double[] ar = {80, 75, 85, 90, 100};
+        System.out.printf("minWeight1(%s) = %d\n", Arrays.toString(ar), minWeight1(ar));
+        System.out.printf("minWeight2(%s) = %d\n", Arrays.toString(ar), minWeight2(ar));
     }
 }

@@ -46,4 +46,12 @@ public class E06GGT {
         }
         return args.x();
     }
+
+    public static void main(String[] args) {
+        int n = 18;
+        int m = 30;
+        System.out.printf("      GGTRec(%d, %d) = %d\n", n, m , GGTRec(n, m));
+        System.out.printf("     GGTIter(%d, %d) = %d\n", n, m, GGTIter(n, m));
+        System.out.printf("GGTITerTuple(%d, %d) = %d\n", n, m, GGTIterTuple(n, m));
+    }
 }

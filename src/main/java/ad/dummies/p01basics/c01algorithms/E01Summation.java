@@ -12,4 +12,10 @@ public class E01Summation {
         int s = n * (n + 1) / 2;
         return s;
     }
+
+    public static void main(String[] args) {
+        int n = 100;
+        System.out.printf("summation1(%d) = %d\n", n, summation1(n));
+        System.out.printf("summation2(%d) = %d\n", n, summation2(n));
+    }
 }

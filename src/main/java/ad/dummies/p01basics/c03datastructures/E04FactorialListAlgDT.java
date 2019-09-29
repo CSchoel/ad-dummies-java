@@ -30,4 +30,18 @@ public class E04FactorialListAlgDT {
     public static int f(int x) {
         return x == 0 ? 1 : x * f(x - 1);
     }
+
+    public static void main(String[] args) {
+        int n = 4;
+        FactorialList fl = fList(n);
+        StringBuilder sb = new StringBuilder("[");
+        while(fl instanceof Cons) {
+            Cons flCons = (Cons) fl;
+            sb.append(flCons.value);
+            fl = flCons.next;
+            if (fl instanceof Cons) { sb.append(", "); }
+        }
+        sb.append("]");
+        System.out.printf("fList(%d) = %s", n, sb);
+    }
 }

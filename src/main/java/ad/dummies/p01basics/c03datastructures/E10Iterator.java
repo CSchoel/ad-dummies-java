@@ -68,4 +68,20 @@ public class E10Iterator {
         return s;
     }
 
+    public static void main(String[] args) {
+        int[] data = {-4, 0, 1, -5, 7, 8};
+        IntList lst = new Nil();
+        for(int x: data) { lst = new Cons(x, lst); }
+        System.out.printf("listSumInner([%s]) = %d\n",
+                lst.traverseWith((x, acc) ->  x + (acc.length() == 0 ? "" : ", ") + acc, ""),
+                listSumInner(lst)
+        );
+        StringBuilder s2 = new StringBuilder();
+        Iterator<Integer> it = lst.iterator();
+        while(it.hasNext()) {
+            s2.append(it.next());
+            if (it.hasNext()) { s2.append(", "); }
+        }
+        System.out.printf("listSumOuter([%s]) = %d\n", s2, listSumOuter(lst));
+    }
 }

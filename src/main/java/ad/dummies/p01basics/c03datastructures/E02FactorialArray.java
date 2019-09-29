@@ -1,5 +1,9 @@
 package ad.dummies.p01basics.c03datastructures;
 
+import java.util.Arrays;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
 public class E02FactorialArray {
 
     // TODO case variants are not possible, because java has no pattern matching
@@ -54,5 +58,12 @@ public class E02FactorialArray {
             a[i] = new FactRecord(i, a[i-1].f * i);
         }
         return a;
+    }
+
+    public static void main(String[] args) {
+        int n = 4;
+        System.out.printf("fArray1(%d) = %s\n", n, Arrays.toString(fArray1(n)));
+        System.out.printf("fArray2(%d) = [%s]\n", n, Arrays.stream(fArray2(n)).map(t -> "("+t.v1+", "+t.v2+")").collect(Collectors.joining(", ")));
+        System.out.printf("fArray3(%d) = [%s]\n", n, Arrays.stream(fArray3(n)).map(t -> "[v: "+t.v+", f: "+t.f+"]").collect(Collectors.joining(", ")));
     }
 }
