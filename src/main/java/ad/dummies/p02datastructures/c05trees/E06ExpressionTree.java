@@ -34,7 +34,7 @@ public class E06ExpressionTree {
 
         @Override
         public List<ExpNode> evalToNodes() {
-            return List.of(new ValueNode(number));
+            return new ArrayList<>(List.of(new ValueNode(number)));
         }
     }
 
@@ -164,7 +164,7 @@ public class E06ExpressionTree {
     private static int evalNodes(List<ExpNode> nodes, Stack<Integer> stack) {
         if (nodes.isEmpty()) { return stack.pop().value; }
         ExpNode firstNode = nodes.get(0);
-        List<ExpNode> rest = nodes.subList(1, nodes.size() - 1);
+        List<ExpNode> rest = nodes.subList(1, nodes.size());
         if (firstNode instanceof ValueNode) {
             return evalNodes(
                     rest,
@@ -195,7 +195,7 @@ public class E06ExpressionTree {
 
         while(!nodes.isEmpty()) {
             ExpNode firstNode = nodes.get(0);
-            List<ExpNode> rest = nodes.subList(1, nodes.size() - 1);
+            List<ExpNode> rest = nodes.subList(1, nodes.size());
             if (firstNode instanceof ValueNode) {
                 stack = stack.push(((ValueNode) firstNode).number);
             } else {

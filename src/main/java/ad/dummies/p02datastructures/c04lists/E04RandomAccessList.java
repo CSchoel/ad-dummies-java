@@ -46,10 +46,10 @@ public class E04RandomAccessList {
             for(int i = 1; i < index; i++) {
                 prev = prev.next;
             }
-            newCell.next = prev.next;
             if (index == 0) {
                 listHead = newCell;
             } else {
+                newCell.next = prev.next;
                 prev.next = newCell;
             }
         }

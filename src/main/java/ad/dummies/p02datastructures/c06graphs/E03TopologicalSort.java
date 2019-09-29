@@ -40,7 +40,7 @@ public class E03TopologicalSort {
             this.edges = edges;
         }
         public ImmutableLinkedList<Vertex> topoSortFunc() {
-            if (vertices instanceof Nil) {
+            if (vertices.size() == 0) {
                 return new Nil<>();
             }
             Vertex v = findSource();

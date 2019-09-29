@@ -39,6 +39,7 @@ public class E02Stack {
     public static class Stack02Array<E> implements Stack<E> {
         private E[] a;
         int top;
+        @SuppressWarnings("unchecked")
         public Stack02Array(int n) {
             // (E[]) here is a small hack that is required because Java
             // eliminates type parameter information during compilation.

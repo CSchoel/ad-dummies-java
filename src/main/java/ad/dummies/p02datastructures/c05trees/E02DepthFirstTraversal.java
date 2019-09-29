@@ -154,6 +154,7 @@ public class E02DepthFirstTraversal {
         public BinTreeIterator(BinTree tree) {
             stack = new EmptyStack<>();
             this.tree = tree;
+            current = tree;
         }
 
         @Override
@@ -170,13 +171,13 @@ public class E02DepthFirstTraversal {
             while (current instanceof Node) {
                 Node currentNode = (Node) current;
                 stack = stack.push(currentNode);
-                tree = currentNode.left;
+                current = currentNode.left;
             }
             ValueAndStack<Node> top = stack.pop();
             int nextValue = top.value.value;
             stack = top.stack;
-            tree = top.value.right;
-            return null;
+            current = top.value.right;
+            return nextValue;
         }
     }
 
@@ -194,7 +195,7 @@ public class E02DepthFirstTraversal {
             if (stack.isEmpty()) { return; }
             ValueAndStack<Node> top = stack.pop();
             consumer.accept(top.value.value);
-            top.value.left.inorderStack1(stack, consumer);
+            top.value.right.inorderStack1(top.stack, consumer);
         }
     }
     public static class Node extends BinTree {
@@ -247,6 +248,7 @@ public class E02DepthFirstTraversal {
                     ValueAndStack<Node> stackNode = stack.pop();
                     consumer.accept(stackNode.value.value);
                     tree = stackNode.value.right;
+                    stack = stackNode.stack;
                 }
             }
         }

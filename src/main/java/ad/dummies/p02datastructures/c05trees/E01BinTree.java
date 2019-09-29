@@ -14,7 +14,7 @@ public class E01BinTree {
     // leaks if you create very large lists. Even if you only use a small part
     // of such a list in your code, it still uses the original large array
     // internally and thus prevents the garbage collector from freeing memory.
-    public class ImmutableArrayList {
+    public static class ImmutableArrayList {
         private final int[] data; // must be private to preserve immutability
         public final int firstIndex; // first index inclusively
         public final int lastIndex;  // last index exclusively
@@ -47,7 +47,7 @@ public class E01BinTree {
         }
 
         public int get(int i) {
-            if (i < firstIndex || i >= lastIndex) {
+            if (i < 0 || i >= size()) {
                 String msg = String.format(
                         "Cannot access index %d for list of length %d.",
                         i, size()

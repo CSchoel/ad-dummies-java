@@ -28,7 +28,7 @@ public class E03Queue {
             }
         }
         public int dequeue() {
-            assert queueHead != null; // queue must not be empty
+            assert queueHead != null: "queue must not be empty";
             Cell firstCell = queueHead;
             if (firstCell.next == null) {
                 queueHead = null;
