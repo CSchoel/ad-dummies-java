@@ -1,5 +1,8 @@
 package ad.dummies.p02datastructures.c05trees;
 
+import com.sun.source.tree.Tree;
+
+import java.util.Arrays;
 import java.util.function.Consumer;
 
 public class E01BinTree {
@@ -103,5 +106,34 @@ public class E01BinTree {
         public int depth() {
             return 0;
         }
+    }
+
+    public static void main(String[] args) {
+        int[] data = {-5, 1, 8, 6, 2};
+        ImmutableArrayList lst = new ImmutableArrayList(10);
+        for(int x: data) { lst = lst.add(x); }
+        BinTree tree = lst.toBTree();
+        class TreeString {
+            BinTree t;
+            public TreeString(BinTree t) {
+                this.t = t;
+            }
+            public String toString() {
+                if (t instanceof Empty) {
+                    return "Empty";
+                } else {
+                    Node tNode = (Node) t;
+                    return String.format(
+                            "Node(%d, %s, %s)",
+                            tNode.value,
+                            new TreeString(tNode.left),
+                            new TreeString(tNode.right)
+                    );
+                }
+            }
+        }
+        System.out.printf("%s.toBTree() = %s\n", Arrays.toString(data), new TreeString(tree));
+        System.out.printf("  %s.sum() = %d\n", new TreeString(tree), tree.sum());
+        System.out.printf("%s.depth() = %d\n", new TreeString(tree), tree.depth());
     }
 }

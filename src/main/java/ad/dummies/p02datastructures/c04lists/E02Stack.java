@@ -1,5 +1,9 @@
 package ad.dummies.p02datastructures.c04lists;
 
+import java.util.List;
+import java.util.function.Consumer;
+import java.util.function.Function;
+
 public class E02Stack {
     public interface Stack<E> {
         void push(E el);
@@ -114,5 +118,18 @@ public class E02Stack {
                     new Stack03AlgDT<>(stackRepCons.tail)
             );
         }
+    }
+    public static void main(String[] args) {
+        Function<Stack<Integer>, List<Integer>> f = s -> {
+            s.push(5);
+            s.push(4);
+            s.pop();
+            s.push(0);
+            s.push(-3);
+            return List.of(s.pop(), s.pop(), s.pop());
+        };
+        System.out.printf("Stack01Linked: %s\n", f.apply(new Stack01Linked<>()));
+        System.out.printf(" Stack02Array: %s\n", f.apply(new Stack02Array<>(10)));
+        System.out.printf(" Stack03AlgDT: %s\n", f.apply(new Stack03AlgDT<>()));
     }
 }

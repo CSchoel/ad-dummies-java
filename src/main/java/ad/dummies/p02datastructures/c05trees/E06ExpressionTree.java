@@ -1,7 +1,6 @@
 package ad.dummies.p02datastructures.c05trees;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.List;
 
 public class E06ExpressionTree {
@@ -222,5 +221,43 @@ public class E06ExpressionTree {
             nodes = rest;
         }
         return stack.pop().value;
+    }
+
+    public static void main(String[] args) {
+        Exp exp = new Add(new Value(2), new Mult(new Value(3), new Value(4)));
+        class ExpString {
+            Exp e;
+            public ExpString(Exp e) {
+                this.e = e;
+            }
+            public String toString() {
+                if (e instanceof Value) {
+                    return Integer.toString(((Value) e).number);
+                } else if (e instanceof Add) {
+                    return String.format(
+                            "Add(%s, %s)",
+                            new ExpString(((Add) e).left),
+                            new ExpString(((Add) e).right)
+                    );
+                } else if (e instanceof Mult) {
+                    return String.format(
+                            "Mult(%s, %s)",
+                            new ExpString(((Mult) e).left),
+                            new ExpString(((Mult) e).right)
+                    );
+                } else if (e instanceof Sub) {
+                    return String.format(
+                            "Sub(%s, %s)",
+                            new ExpString(((Sub) e).left),
+                            new ExpString(((Sub) e).right)
+                    );
+                }
+                return "ERROR";
+            }
+        }
+        String expS = new ExpString(exp).toString();
+        System.out.printf("                  %s.evaluate() = %d\n", expS, exp.evaluate());
+        System.out.printf("    evalNodes(%s.evalToNodes()) = %d\n", expS, evalNodes(exp.evalToNodes()));
+        System.out.printf("evalNodesIter(%s.evalToNodes()) = %d\n", expS, evalNodesIter(exp.evalToNodes()));
     }
 }

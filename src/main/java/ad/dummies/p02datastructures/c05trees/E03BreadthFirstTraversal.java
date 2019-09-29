@@ -1,9 +1,11 @@
 package ad.dummies.p02datastructures.c05trees;
 
-import java.util.Iterator;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.lang.reflect.Array;
+import java.util.*;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class E03BreadthFirstTraversal {
     public interface BinTree extends Iterable<Integer> {
@@ -127,5 +129,31 @@ public class E03BreadthFirstTraversal {
             queue.add(curNode.right);
             consumer.accept(curNode.value);
         }
+    }
+
+    public static void main(String[] args) {
+        BinTree tree = new Node(
+                4,
+                new Node(1,
+                        new Node(8, new Empty(), new Empty()),
+                        new Node(2, new Empty(), new Empty())
+                ),
+                new Node(-1,
+                        new Node(0, new Empty(), new Empty()),
+                        new Empty()
+                )
+        );
+        List<Integer> resInner1 = new ArrayList<>();
+        breadthFirst(tree, resInner1::add);
+        System.out.printf("        breadthFirst1: %s\n", resInner1);
+        List<Integer> resInner2 = new ArrayList<>();
+        breadthFirst2(tree, resInner2::add);
+        System.out.printf("        breadthFirst2: %s\n", resInner2);
+        List<Integer> resOuter1 = new ArrayList<>();
+        tree.forEach(resOuter1::add);
+        System.out.printf(" BreadthFirstIterator: %s\n", resOuter1);
+        List<Integer> resOuter2 = new ArrayList<>();
+        new BreadthFirstIterator2(tree).forEachRemaining(resOuter2::add);
+        System.out.printf("BreadthFirstIterator2: %s\n", resOuter2);
     }
 }

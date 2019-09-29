@@ -1,5 +1,8 @@
 package ad.dummies.p02datastructures.c04lists;
 
+import java.util.Arrays;
+import java.util.function.Function;
+
 public class E04RandomAccessList {
     public static class List {
         private static class Cell {
@@ -49,6 +52,48 @@ public class E04RandomAccessList {
             } else {
                 prev.next = newCell;
             }
+        }
+
+        public int get(int i) {
+            Cell cur = listHead;
+            for(int n = i; n > 0; n--) { cur = cur.next; }
+            return cur.content;
+        }
+
+        public int size() {
+            Cell cur = listHead;
+            int n = 0;
+            while(cur != null) {
+                cur = cur.next;
+                n++;
+            }
+            return n;
+        }
+    }
+
+    public static void main(String[] args) {
+        List lst = new List();
+        Function<List, String> toS = l -> {
+            int[] data = new int[l.size()];
+            for(int i = 0; i < data.length; i++) {
+                data[i] = l.get(i);
+            }
+            return Arrays.toString(data);
+        };
+        int[][] inserts = {{5, 0}, {6, 1}, {0, 1}, {-1, 3}};
+        System.out.println("insertAtPos1");
+        for(int[] ins: inserts) {
+            System.out.printf("Inserting value %d at position %d\n", ins[0], ins[1]);
+            lst.insertAtPos1(ins[0], ins[1]);
+            System.out.printf("List content: %s\n", toS.apply(lst));
+        }
+        System.out.println();
+        lst = new List();
+        System.out.println("insertAtPos2");
+        for(int[] ins: inserts) {
+            System.out.printf("Inserting value %d at position %d\n", ins[0], ins[1]);
+            lst.insertAtPos2(ins[0], ins[1]);
+            System.out.printf("List content: %s\n", toS.apply(lst));
         }
     }
 }

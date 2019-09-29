@@ -1,13 +1,14 @@
 package ad.dummies.p02datastructures.c06graphs;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class E01MaxReachable {
     public static enum VisitState { VISITED, UNVISITED }
     public static class Vertex {
-        public final int value;
+        public final String value;
         public VisitState mark;
-        public Vertex(int value) {
+        public Vertex(String value) {
             this.value = value;
             mark = VisitState.UNVISITED;
         }
@@ -57,13 +58,14 @@ public class E01MaxReachable {
             });
             return result;
         }
-        public void travSet() {
+        public Set<Vertex> travSet() {
             Set<Vertex> visited = new HashSet<>();
             for(Vertex v: vertices) {
                 if (!visited.contains(v)) {
                     reachSet(v, visited);
                 }
             }
+            return visited;
         }
 
         public List<Vertex> reachSet(Vertex v) {
@@ -96,5 +98,35 @@ public class E01MaxReachable {
                     .max(Comparator.comparing(v -> v.score))
                     .map(v -> v.vertex).orElse(null);
         }
+    }
+
+    public static void main(String[] args) {
+        String[] names = {"Vlad", "Brunhilde", "Olga", "Rüdiger", "Hildegard", "Anna"};
+        List<Vertex> vertices = Arrays.stream(names).map(Vertex::new).collect(Collectors.toList());
+        List<Edge> edges = List.of(
+                new Edge(vertices.get(0), vertices.get(2)),
+                new Edge(vertices.get(0), vertices.get(4)),
+                new Edge(vertices.get(1), vertices.get(3)),
+                new Edge(vertices.get(2), vertices.get(4)),
+                new Edge(vertices.get(5), vertices.get(3)),
+                new Edge(vertices.get(5), vertices.get(4))
+        );
+        Graph vampFollowers = new Graph(vertices, edges);
+        vampFollowers.trav();
+        System.out.printf(
+                "Visited states after call to g.trav(): %s\n",
+                vertices.stream().map(v -> v.value + ": " + v.mark)
+                        .collect(Collectors.joining(", "))
+        );
+        vertices.forEach(v -> v.mark = VisitState.UNVISITED);
+        System.out.printf(
+                "g.travSet() = %s\n",
+                vampFollowers.travSet().stream()
+                        .map(x -> x.value).collect(Collectors.toList())
+        );
+        System.out.printf(
+                "g.maxReachable() = %s\n",
+                vampFollowers.maxReachable().value
+        );
     }
 }

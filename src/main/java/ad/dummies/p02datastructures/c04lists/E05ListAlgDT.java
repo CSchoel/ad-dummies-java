@@ -158,5 +158,32 @@ public class E05ListAlgDT {
         }
     }
 
-    // REMOVEME S. 152
+    public static void main(String[] args) {
+        Function<List<?>, String> toS = l -> {
+            StringBuilder sb = new StringBuilder("[");
+            for(String s: l.map(Object::toString)) {
+                sb.append(s);
+                sb.append(", ");
+            }
+            if (l.length() > 0) {
+                sb.delete(sb.length()-2, sb.length());
+            }
+            sb.append("]");
+            return sb.toString();
+        };
+        List<Integer> lst = new Nil<>();
+        int[] data = {9, 1, 75, -5};
+        for(int x: data) { lst = new Cons<>(x, lst); }
+        String lstS = toS.apply(lst);
+        System.out.printf("%s.length() = %d\n", lstS, lst.length());
+        System.out.printf("%s.filter(x -> x %% 3 == 0) = %s\n", lstS, toS.apply(lst.filter(x -> x % 3 == 0)));
+        System.out.printf("%s.map(x -> x * 2) = %s\n", lstS, toS.apply(lst.map(x -> x * 2)));
+        System.out.printf("%s.quicksort() = %s\n", lstS, toS.apply(lst.quicksort(Integer::compareTo)));
+        List<Integer> lst2 = new Nil<>();
+        data = new int[]{2, 5, 8};
+        for(int x: data) { lst2 = new Cons<>(x, lst2); }
+        String lstS2 = toS.apply(lst2);
+        System.out.printf("%s.perm() = %s\n", lstS2, toS.apply(lst2.perm().map(toS::apply)));
+        System.out.printf("%s.append(%s) = %s\n", lstS, lstS2, toS.apply(lst.append(lst2)));
+    }
 }

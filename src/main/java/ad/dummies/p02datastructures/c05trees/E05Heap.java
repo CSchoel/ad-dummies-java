@@ -1,5 +1,7 @@
 package ad.dummies.p02datastructures.c05trees;
 
+import java.util.Arrays;
+
 public class E05Heap {
 
 
@@ -15,6 +17,10 @@ public class E05Heap {
             }
         }
         private Node root = null;
+
+        public void insert(int x) {
+            insert(root, x);
+        }
 
         public void insert(Node node, int x) {
             if (root == null) {
@@ -36,5 +42,16 @@ public class E05Heap {
                 insert(node.left.value > node.right.value ? node.left : node.right, valueDown);
             }
         }
+
+        public int max() {
+            return root.value;
+        }
+    }
+
+    public static void main(String[] args) {
+        Heap h = new Heap();
+        int[] data = {2, 42, 9, 30, 4, 5, 60};
+        for (int x: data) { h.insert(x); }
+        System.out.printf("Heap(%s).max() = %d\n", Arrays.toString(data), h.max());
     }
 }

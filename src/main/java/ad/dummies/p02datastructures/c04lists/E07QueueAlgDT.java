@@ -1,5 +1,9 @@
 package ad.dummies.p02datastructures.c04lists;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class E07QueueAlgDT {
     public static class Queue {
         public interface QueueRep {
@@ -114,5 +118,31 @@ public class E07QueueAlgDT {
                 return new ValueAndQueueA(newQueueOut.value, new QueueA(new Empty(), newQueueOut.rest));
             }
         }
+    }
+
+    public static void main(String[] args) {
+        Queue q = new Queue();
+        QueueA qa = new QueueA();
+        int[] data = {1, 5, -1, 2};
+        for(int x: data) {
+            q = q.enqueue(x);
+            qa = qa.enqueue(x);
+        }
+        System.out.printf("Enqueueing %s: \n", Arrays.toString(data));
+        List<Integer> res = new ArrayList<>();
+        for(int i = 0; i < data.length; i++) {
+            Queue.ValueAndQueue vq = q.dequeue();
+            q = vq.queue;
+            res.add(vq.value);
+        }
+        System.out.printf(" Dequeue order of class Queue: %s\n", res);
+        List<Integer> resA = new ArrayList<>();
+        for(int i = 0; i < data.length; i++) {
+            QueueA.ValueAndQueueA vq = qa.dequeue();
+            qa = vq.queue;
+            resA.add(vq.value);
+        }
+        System.out.printf("Dequeue order of class QueueA: %s\n", resA);
+
     }
 }

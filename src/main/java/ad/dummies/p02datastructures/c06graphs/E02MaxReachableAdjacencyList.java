@@ -1,11 +1,16 @@
 package ad.dummies.p02datastructures.c06graphs;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 public class E02MaxReachableAdjacencyList {
     public static class Vertex {
         private String name;
         private List<Vertex> adjacent;
+        public Vertex(String name, List<Vertex> adjacent) {
+            this.name = name;
+            this.adjacent = adjacent;
+        }
     }
 
     public static class Graph {
@@ -44,5 +49,26 @@ public class E02MaxReachableAdjacencyList {
                     .max(Comparator.comparing(v -> v.score))
                     .map(v -> v.vertex).orElse(null);
         }
+    }
+
+    public static void main(String[] args) {
+        String[] names = {"Vlad", "Brunhilde", "Olga", "Rüdiger", "Hildegard", "Anna"};
+        List<Vertex>[] adjLists = new List[names.length];
+        for(int i = 0; i < names.length; i++) { adjLists[i] = new ArrayList<>(); }
+        List<Vertex> vertices = new ArrayList<>();
+        for(int i = 0; i < names.length; i++) {
+            vertices.add(new Vertex(names[i], adjLists[i]));
+        }
+        adjLists[0].add(vertices.get(2));
+        adjLists[0].add(vertices.get(4));
+        adjLists[1].add(vertices.get(3));
+        adjLists[2].add(vertices.get(4));
+        adjLists[5].add(vertices.get(3));
+        adjLists[5].add(vertices.get(4));
+        Graph vampFollowers = new Graph(vertices);
+        System.out.printf(
+                "g.maxReachable() = %s\n",
+                vampFollowers.maxReachable().name
+        );
     }
 }

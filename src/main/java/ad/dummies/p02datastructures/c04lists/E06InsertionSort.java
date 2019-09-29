@@ -150,9 +150,32 @@ public class E06InsertionSort {
 
     public static void main(String[] args) {
         int[] a = {1, 2, 3};
+        System.out.printf("Permutations of %s: \n", Arrays.toString(a));
         for(Iterator<int[]> permIter = new PermutationIterator(a); permIter.hasNext();) {
             int[] perm = permIter.next();
             System.out.println(Arrays.toString(perm));
         }
+
+        System.out.println();
+        int[] data = {7, 4, 1, 5, 1, 9, 8, 10, 0, 2};
+        System.out.printf("Sorting %s:\n", Arrays.toString(data));
+        int[] sorted = Arrays.copyOf(data, data.length);
+        insertionSortI(sorted);
+        System.out.printf(" insertionSortI: %s\n", Arrays.toString(sorted));
+        sorted = Arrays.copyOf(data, data.length);
+        System.out.printf(" insertionSortF: %s\n", Arrays.toString(insertionSortF(sorted)));
+        // TODO: result is incorrect
+        System.out.printf("insertionSortFA: %s\n", Arrays.toString(insertionSortFA(data)));
+        IntList dataL = new Nil();
+        for(int i = data.length - 1; i >= 0; i--) { dataL = new Cons(data[i], dataL); }
+        IntList res = dataL.insertionSortFL();
+        sorted = new int[data.length];
+        for(int i = 0; i < data.length; i++) {
+            Cons resCons = (Cons) res;
+            sorted[i] = resCons.head;
+            res = resCons.tail;
+        }
+        System.out.printf("insertionSortFL: %s\n", Arrays.toString(sorted));
+        System.out.printf("          sortP: %s\n", Arrays.toString(sortP(data)));
     }
 }

@@ -1,7 +1,13 @@
 package ad.dummies.p02datastructures.c05trees;
 
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.function.Consumer;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+import java.util.stream.StreamSupport;
 
 public class E02DepthFirstTraversal {
     // Note: We could use ImmutableArrayList for our traversals, but the
@@ -12,7 +18,7 @@ public class E02DepthFirstTraversal {
     // WARNING: The downside of this approach is that it can lead to memory
     // leaks since the tail of a list may point to unused data and prevent the
     // garbage collector from freeing memory for these items.
-    public static class ImmutableLinkedList {
+    public static class ImmutableLinkedList implements Iterable<Integer> {
         private class MutableNode {
             public int head;
             public MutableNode tail;
@@ -64,6 +70,25 @@ public class E02DepthFirstTraversal {
                 curNode = curNode.tail;
             } while(curNode != lastNode);
             return borderNodes;
+        }
+
+        @Override
+        public Iterator<Integer> iterator() {
+            return new Iterator<Integer>() {
+                MutableNode current = firstNode;
+
+                @Override
+                public boolean hasNext() {
+                    return current != null;
+                }
+
+                @Override
+                public Integer next() {
+                    int res = current.head;
+                    current = current.tail;
+                    return res;
+                }
+            };
         }
     }
 
@@ -266,5 +291,36 @@ public class E02DepthFirstTraversal {
         public Iterator<Integer> iterator() {
             return new BinTreeIterator(this);
         }
+    }
+
+    public static void main(String[] args) {
+        BinTree tree = new Node(
+                4,
+                new Node(1,
+                        new Node(8, new Empty(), new Empty()),
+                        new Node(2, new Empty(), new Empty())
+                ),
+                new Node(-1,
+                        new Node(0, new Empty(), new Empty()),
+                        new Empty()
+                )
+        );
+        Function<Iterable<Integer>, List<Integer>> toJavaList = l ->
+                StreamSupport.stream(l.spliterator(), false)
+                        .collect(Collectors.toList());
+        System.out.printf("       preorder: %s\n", toJavaList.apply(tree.preorder()));
+        System.out.printf("        inorder: %s\n", toJavaList.apply(tree.inorder()));
+        System.out.printf("      postorder: %s\n", toJavaList.apply(tree.postorder()));
+        System.out.printf("BinTreeIterator: %s\n", toJavaList.apply(tree));
+        List<Integer> resP = new ArrayList<>();
+        tree.inorderProcess(resP::add);
+        System.out.printf(" inorderProcess: %s\n", resP);
+        List<Integer> resIS1 = new ArrayList<>();
+        tree.inorderStack1(resIS1::add);
+        System.out.printf("  inorderStack1: %s\n", resIS1);
+        List<Integer> resIS2 = new ArrayList<>();
+        tree.inorderStack2(resIS2::add);
+        System.out.printf("  inorderStack2: %s\n", resIS2);
+
     }
 }

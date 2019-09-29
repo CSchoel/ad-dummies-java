@@ -18,8 +18,8 @@ public class E03TopologicalSort {
     }
 
     public static class Vertex {
-        public final int value;
-        public Vertex(int value) {
+        public final String value;
+        public Vertex(String value) {
             this.value = value;
         }
     }
@@ -115,5 +115,30 @@ public class E03TopologicalSort {
             }
             return result;
         }
+    }
+
+    public static void main(String[] args) {
+        String[] names = {"glasses", "undershirt", "shirt", "watch", "suspenders", "jacket", "socks", "underpants", "pants", "shoes"};
+        List<Vertex> vertices = Arrays.stream(names).map(Vertex::new).collect(Collectors.toList());
+        List<Edge> edges = List.of(
+                new Edge(vertices.get(1), vertices.get(0)),
+                new Edge(vertices.get(1), vertices.get(2)),
+                new Edge(vertices.get(2), vertices.get(4)),
+                new Edge(vertices.get(2), vertices.get(5)),
+                new Edge(vertices.get(4), vertices.get(5)),
+                new Edge(vertices.get(6), vertices.get(9)),
+                new Edge(vertices.get(7), vertices.get(8)),
+                new Edge(vertices.get(8), vertices.get(9))
+        );
+        Graph clothing = new Graph(vertices, edges);
+        ImmutableLinkedList<Vertex> topo = clothing.topoSortFunc();
+        List<String> topoLst = new ArrayList<>();
+        while(topo instanceof Cons) {
+            Cons<Vertex> topoCons = (Cons<Vertex>) topo;
+            topoLst.add(topoCons.head.value);
+            topo = topoCons.tail;
+        }
+        System.out.printf("g.topoSortFunc() = %s\n", topoLst);
+        System.out.printf(" g.topoSortImp() = %s\n", clothing.topoSortImp().stream().map(v -> v.value).collect(Collectors.toList()));
     }
 }

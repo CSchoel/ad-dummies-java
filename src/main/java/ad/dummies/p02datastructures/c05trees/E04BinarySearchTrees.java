@@ -4,6 +4,9 @@ public class E04BinarySearchTrees {
     public static class Map<K extends Comparable<K>, V extends Comparable<V>> {
         private BSTree<K, V> t;
 
+        public Map() {
+            t = new Empty<>();
+        }
         public Map(BSTree<K, V> t) {
             this.t = t;
         }
@@ -73,5 +76,26 @@ public class E04BinarySearchTrees {
         public V lookup(K key) {
             return t.lookup(key);
         }
+    }
+
+    public static void main(String[] args) {
+        String[] names = {"Hugo", "Karlheinz", "Sibylle"};
+        int[] weights = {80, 90, 70};
+        for(int i = 0; i < names.length; i++) {
+            System.out.printf("%10s -> %2d\n", names[i], weights[i]);
+        }
+
+        Map<String, Integer> weightsI = new Map<>();
+        for(int i = 0; i < names.length; i++) {
+            weightsI.insertI(names[i], weights[i]);
+        }
+        Map<String, Integer> weightsF = new Map<>();
+        for(int i = 0; i < names.length; i++) {
+            weightsF = weightsF.insertF(names[i], weights[i]);
+        }
+        String key = "Hugo";
+        System.out.printf("weightsI.lookup(%s) = %d\n", key, weightsI.lookup(key));
+        System.out.printf("weightsF.lookup(%s) = %d\n", key, weightsF.lookup(key));
+
     }
 }

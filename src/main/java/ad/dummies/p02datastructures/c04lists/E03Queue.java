@@ -1,5 +1,9 @@
 package ad.dummies.p02datastructures.c04lists;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class E03Queue {
     private static class Queue {
         private static class Cell {
@@ -34,5 +38,16 @@ public class E03Queue {
             }
             return firstCell.content;
         }
+    }
+    public static void main(String[] args) {
+        int[] data = {1, 2, 3};
+        Queue q = new Queue();
+        for(int x: data) { q.enqueue(x); }
+        List<Integer> deq = new ArrayList<>();
+        for(int i = 0; i < data.length; i++) { deq.add(q.dequeue()); }
+        System.out.printf("Enqueuing %s yields dequeue order %s\n",
+                Arrays.toString(data), deq
+        );
+
     }
 }
