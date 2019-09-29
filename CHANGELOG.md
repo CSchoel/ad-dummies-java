@@ -8,7 +8,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-\[nothing\]
+* main methods for all examples in part 1 and 2 that allow to call the
+    implemented functions with parameters that can be adjusted in the code
 
 ### Changed
 
@@ -16,7 +17,8 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Fixed
 
-\[nothing\]
+* some small bugs discovered in the code for part 2 during the
+    implementation of the main methods
 
 ## \[0.3.3\]
 
