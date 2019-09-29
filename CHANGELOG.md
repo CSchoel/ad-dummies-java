@@ -18,6 +18,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 \[nothing\]
 
+## \[0.3.3\]
+
+### Added
+
+* Full implementations for chapter 6
+
+### Changed
+
+\[nothing\]
+
+### Fixed
+
+\[nothing\]
+
 ## \[0.3.2\]
 
 ### Added
