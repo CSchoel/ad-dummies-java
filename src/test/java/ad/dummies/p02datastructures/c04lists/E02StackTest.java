@@ -271,4 +271,9 @@ class E02StackTest {
         s = popRes.stack;
         assertEquals(9, popRes.element);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E02Stack.main(new String[0]);
+    }
 }

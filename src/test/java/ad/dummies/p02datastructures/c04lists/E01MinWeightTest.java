@@ -121,4 +121,9 @@ class E01MinWeightTest {
         // six possible positions => only check value at position
         assertEquals(80, people[res]);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E01MinWeight.main(new String[0]);
+    }
 }

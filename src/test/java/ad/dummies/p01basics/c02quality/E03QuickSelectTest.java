@@ -78,4 +78,10 @@ class E03QuickSelectTest {
                 6, 10, 8, 4, 3, 7, 2, 9, 5
         }, 3));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E03QuickSelect.main(new String[0]);
+
+    }
 }

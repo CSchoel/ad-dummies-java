@@ -138,4 +138,9 @@ class E09QuicksortTest {
 
         assertTrue(sorted instanceof Nil);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E09Quicksort.main(new String[0]);
+    }
 }

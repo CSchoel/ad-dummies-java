@@ -80,4 +80,9 @@ class E02LexicalTest {
                 "bb", "bb", "bb", "bb", "bb", "bb", "bb", "bb", "bb"
         }));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E02Lexical.main(new String[0]);
+    }
 }

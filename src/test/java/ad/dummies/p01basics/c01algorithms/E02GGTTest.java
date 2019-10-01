@@ -102,4 +102,10 @@ public class E02GGTTest {
     public void ggt3SameCommonPrimeFactorMultipleTimes() {
         assertEquals(1024, E02GGT.ggt3(1024, 1024 * 13));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E02GGT.main(new String[0]);
+
+    }
 }

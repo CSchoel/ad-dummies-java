@@ -1,5 +1,6 @@
 package ad.dummies.p01basics.c02quality;
 
+import ad.dummies.p01basics.c01algorithms.E01Summation;
 import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
@@ -119,5 +120,10 @@ public class E01WeightTest {
         int res = E01Weight.minWeight2(people);
         // six possible positions => only check value at position
         assertEquals(80, people[res]);
+    }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E01Weight.main(new String[0]);
     }
 }

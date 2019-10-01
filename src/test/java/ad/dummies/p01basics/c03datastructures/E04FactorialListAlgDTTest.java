@@ -47,4 +47,8 @@ class E04FactorialListAlgDTTest {
         assertTrue(((Cons) lst).next() instanceof Nil);
     }
 
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E04FactorialListAlgDT.main(new String[0]);
+    }
 }

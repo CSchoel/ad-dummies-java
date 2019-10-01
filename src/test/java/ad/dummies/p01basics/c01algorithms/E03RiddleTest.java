@@ -27,4 +27,10 @@ public class E03RiddleTest {
     public void riddleMzero() {
         assertEquals(0, E03Riddle.riddle(7, 0));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E03Riddle.main(new String[0]);
+
+    }
 }

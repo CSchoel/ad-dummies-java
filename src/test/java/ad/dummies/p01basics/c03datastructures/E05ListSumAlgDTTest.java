@@ -53,4 +53,9 @@ public class E05ListSumAlgDTTest {
     public void listSumRObjectOrientedFive() {
         assertEquals(8, lstFive.listSumR());
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E05ListSumAlgDT.main(new String[0]);
+    }
 }

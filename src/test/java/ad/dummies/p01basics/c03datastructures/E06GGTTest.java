@@ -89,4 +89,9 @@ class E06GGTTest {
     public void GGTIterTupleSameCommonPrimeFactorMultipleTimes() {
         assertEquals(1024, E06GGT.GGTIterTuple(1024, 1024 * 13));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E06GGT.main(new String[0]);
+    }
 }

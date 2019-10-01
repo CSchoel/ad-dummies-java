@@ -74,4 +74,9 @@ class E02FactorialArrayTest {
         assertEquals(4, ar[4].v);
         assertEquals(24, ar[4].f);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E02FactorialArray.main(new String[0]);
+    }
 }

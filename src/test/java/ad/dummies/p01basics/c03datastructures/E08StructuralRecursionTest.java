@@ -222,4 +222,9 @@ class E08StructuralRecursionTest {
 
         assertTrue(lst instanceof Nil);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E08StructuralRecursion.main(new String[0]);
+    }
 }

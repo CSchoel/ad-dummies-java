@@ -47,4 +47,9 @@ class E03FactorialListTest {
         assertEquals(24, lst.n.n.n.n.v);
         assertNull(lst.n.n.n.n.n);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E03FactorialList.main(new String[0]);
+    }
 }

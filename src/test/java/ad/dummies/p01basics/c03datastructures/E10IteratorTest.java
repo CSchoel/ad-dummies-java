@@ -40,4 +40,9 @@ class E10IteratorTest {
     void listSumOuterFiveElements() {
         assertEquals(8, listSumOuter(lstFive));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E10Iterator.main(new String[0]);
+    }
 }

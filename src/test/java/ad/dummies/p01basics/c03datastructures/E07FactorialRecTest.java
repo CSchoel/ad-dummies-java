@@ -58,4 +58,9 @@ class E07FactorialRecTest {
     void fIter2Four() {
         assertEquals(24, E07FactorialRec.fIter2(4));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E07FactorialRec.main(new String[0]);
+    }
 }

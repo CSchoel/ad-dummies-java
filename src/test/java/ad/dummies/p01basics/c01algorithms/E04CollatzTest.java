@@ -57,4 +57,10 @@ public class E04CollatzTest {
         E04Collatz.collatz(32);
         assertEquals(List.of(32, 16, 8, 4, 2, 1), output);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E04Collatz.main(new String[0]);
+
+    }
 }

@@ -62,4 +62,10 @@ public class E01SummationTest {
     public void summation2maxInput() {
         assertEquals(46340, findHighestInput(E01Summation::summation2));
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        E01Summation.main(new String[0]);
+
+    }
 }
