@@ -6,7 +6,7 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public class E05ListAlgDT {
-    private interface List<E> extends Iterable<E> {
+    public interface List<E> extends Iterable<E> {
         int length();
         List<E> append(List<E> other);
         List<E> quicksort(Comparator<E> cmp);
@@ -14,7 +14,7 @@ public class E05ListAlgDT {
         <F> List<F> map(Function<E, F> f);
         List<List<E>> perm();
     }
-    private static class ListIterator<E> implements Iterator<E> {
+    public static class ListIterator<E> implements Iterator<E> {
         List<E> pos;
 
         public ListIterator(List<E> pos) {
@@ -35,7 +35,7 @@ public class E05ListAlgDT {
             return value;
         }
     }
-    private static class Nil<E> implements List<E> {
+    public static class Nil<E> implements List<E> {
         @Override
         public int length() {
             return 0;
@@ -71,7 +71,7 @@ public class E05ListAlgDT {
             return new ListIterator<>(this);
         }
     }
-    private static class Cons<E> implements List<E> {
+    public static class Cons<E> implements List<E> {
         private final E head;
         private final List<E> tail;
         public Cons(E value, List<E> next) {
@@ -132,7 +132,7 @@ public class E05ListAlgDT {
             return consLst.head + sum(consLst.tail);
         }
     }
-    public static <E> List<E> join(List<List<E>> lists) {
+    private static <E> List<E> join(List<List<E>> lists) {
         if (lists instanceof Nil) {
             return new Nil<>();
         } else {
@@ -141,7 +141,7 @@ public class E05ListAlgDT {
         }
     }
 
-    public static <E> List<List<E>> insertInEveryListAtEveryPos(E head, List<List<E>> perm) {
+    private static <E> List<List<E>> insertInEveryListAtEveryPos(E head, List<List<E>> perm) {
         return join(perm.map(l -> insertAtEveryPos(head, l)));
     }
 

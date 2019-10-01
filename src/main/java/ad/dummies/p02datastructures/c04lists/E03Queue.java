@@ -5,7 +5,7 @@ import java.util.Arrays;
 import java.util.List;
 
 public class E03Queue {
-    private static class Queue {
+    public static class Queue {
         private static class Cell {
             int content;
             Cell next;
