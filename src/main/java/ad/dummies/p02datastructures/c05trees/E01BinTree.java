@@ -1,10 +1,20 @@
 package ad.dummies.p02datastructures.c05trees;
 
-import com.sun.source.tree.Tree;
-
 import java.util.Arrays;
-import java.util.function.Consumer;
 
+/**
+ * <p>Example from the german book "Algorithms and data structures for
+ * dummies":</p>
+ *
+ * <p>A. Gogol-Döring and T. Letschert, <i>Algorithmen und Datenstrukturen für
+ * Dummies</i>. Weinheim, Germany: Wiley-VCH, 2019.</p>
+ *
+ * <p>The current version of these examples with unit tests and benchmarks can
+ * be found <a href="https://github.com/CSchoel/ad-dummies-java">on GitHub</a>.
+ * </p>
+ *
+ * @author Christopher Schölzel
+ */
 public class E01BinTree {
     // Note: Since the algorithm does not specify which kind of List we
     // should use I chose an immutable array list that makes excessive use

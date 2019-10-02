@@ -1,14 +1,26 @@
 package ad.dummies.p02datastructures.c04lists;
 
-import ad.dummies.p01basics.c03datastructures.E05ListSumAlgDT;
 import org.junit.jupiter.api.Test;
 
 import java.util.Iterator;
 
+import static ad.dummies.p02datastructures.c04lists.E05ListAlgDT.*;
 import static org.junit.jupiter.api.Assertions.*;
 
-import static ad.dummies.p02datastructures.c04lists.E05ListAlgDT.*;
-
+/**
+ * <p>Unit tests for an example from the german book "Algorithms and data
+ * structures for dummies":</p>
+ *
+ * <p>A. Gogol-Döring and T. Letschert, <i>Algorithmen und Datenstrukturen für
+ * Dummies</i>. Weinheim, Germany: Wiley-VCH, 2019.</p>
+ *
+ * <p>The current version of these examples with unit tests and benchmarks can
+ * be found <a href="https://github.com/CSchoel/ad-dummies-java">on GitHub</a>.
+ * </p>
+ *
+ * @author Christopher Schölzel
+ * @see E05ListAlgDT
+ */
 class E05ListAlgDTTest {
 
     @Test
