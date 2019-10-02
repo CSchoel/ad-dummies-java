@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 * main methods for all examples in part 1 and 2 that allow to call the
     implemented functions with parameters that can be adjusted in the code
+* Javadoc comment about author and source of examples in all java files
 
 ### Changed
 
