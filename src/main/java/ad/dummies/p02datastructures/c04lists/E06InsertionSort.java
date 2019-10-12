@@ -79,7 +79,7 @@ public class E06InsertionSort {
             int[] a1 = insert(withoutFirst(a), x); // FIXME: typo in book: v -> x
             res[0] = a[0];
             // FIXME: in the book i reaches res.length
-            for(int i = 0; i < a.length - 1; i++) {
+            for(int i = 0; i < res.length - 1; i++) {
                 res[i + 1] = a1[i];
             }
         }
