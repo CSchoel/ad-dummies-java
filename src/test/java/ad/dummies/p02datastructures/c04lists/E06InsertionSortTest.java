@@ -26,7 +26,7 @@ class E06InsertionSortTest {
 
     private static IntList buildIntList(int ... data) {
         IntList lst = new Nil();
-        for(int i = data.length - 1; i > 0; i--) {
+        for(int i = data.length - 1; i >= 0; i--) {
             lst = new Cons(data[i], lst);
         }
         return lst;
