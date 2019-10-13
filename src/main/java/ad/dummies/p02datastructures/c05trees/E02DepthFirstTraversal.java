@@ -171,7 +171,7 @@ public class E02DepthFirstTraversal {
 
         @Override
         public boolean hasNext() {
-            // FIXME: error in the book
+            //FIXME: error in the book
             // wrong: t = not(tree = Empty and stack = Nil)
             // correct: not(t = Empty and stack = Nil)
             return current instanceof Node || !stack.isEmpty();

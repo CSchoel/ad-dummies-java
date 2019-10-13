@@ -27,7 +27,7 @@ public class E06ExpressionTree {
         }
     }
     public static class AddNode implements ExpNode {}
-    public static class SubNode implements ExpNode {} // FIXME: SubNode is mussing in book
+    public static class SubNode implements ExpNode {} // FIXME: SubNode is missing in book
     public static class MultNode implements ExpNode {}
 
     public interface Exp {
