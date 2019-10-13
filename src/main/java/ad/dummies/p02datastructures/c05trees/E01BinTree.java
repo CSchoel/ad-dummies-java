@@ -43,7 +43,7 @@ public class E01BinTree {
         }
 
         public ImmutableArrayList add(int x) {
-            assert lastIndex < data.length - 1;
+            assert lastIndex < data.length;
             data[size()] = x;
             return new ImmutableArrayList(data, firstIndex, lastIndex + 1);
         }
