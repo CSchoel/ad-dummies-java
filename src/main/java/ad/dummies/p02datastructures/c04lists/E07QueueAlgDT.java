@@ -51,7 +51,7 @@ public class E07QueueAlgDT {
             }
         }
 
-        QueueRep queueRep;
+        private QueueRep queueRep;
         public Queue() {
             queueRep = new Empty();
         }
