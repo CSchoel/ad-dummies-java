@@ -68,6 +68,16 @@ public class E01BinTree {
         }
 
         public ImmutableArrayList[] splitInHalf() {
+            if (size() == 1) {
+                //FIXME: this special case is only needed to yield a left-heavy
+                // tree for a two-element list. The function would be more
+                // consistent if we just removed this if and produced a right-
+                // heavy tree.
+                return new ImmutableArrayList[]{
+                        new ImmutableArrayList(data, firstIndex, firstIndex + 1),
+                        new ImmutableArrayList(0)
+                };
+            }
             int splitIndex = firstIndex + size() / 2;
             return new ImmutableArrayList[]{
                     new ImmutableArrayList(data, firstIndex, splitIndex),
