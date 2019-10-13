@@ -1,6 +1,8 @@
 package ad.dummies.p02datastructures.c04lists;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.Iterator;
 
@@ -21,6 +23,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author Christopher Schölzel
  * @see E05ListAlgDT
  */
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 class E05ListAlgDTTest {
 
     @Test

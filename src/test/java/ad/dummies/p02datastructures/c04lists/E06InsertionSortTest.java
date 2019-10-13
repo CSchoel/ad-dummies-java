@@ -1,6 +1,8 @@
 package ad.dummies.p02datastructures.c04lists;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import java.util.Iterator;
 
@@ -22,6 +24,7 @@ import static ad.dummies.p02datastructures.c04lists.E06InsertionSort.*;
  * @author Christopher Schölzel
  * @see E06InsertionSort
  */
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 class E06InsertionSortTest {
 
     private static IntList buildIntList(int ... data) {
