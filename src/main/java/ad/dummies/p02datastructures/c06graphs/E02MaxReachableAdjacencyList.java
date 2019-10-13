@@ -65,6 +65,7 @@ public class E02MaxReachableAdjacencyList {
         }
     }
 
+    @SuppressWarnings("unchecked")
     public static void main(String[] args) {
         String[] names = {"Vlad", "Brunhilde", "Olga", "Rüdiger", "Hildegard", "Anna"};
         List<Vertex>[] adjLists = new List[names.length];
