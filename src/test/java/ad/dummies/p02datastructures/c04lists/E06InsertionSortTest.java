@@ -291,4 +291,9 @@ class E06InsertionSortTest {
         int[] sorted = sortP(data);
         assertArrayEquals(new int[]{-1, 0, 8, 10, 11}, sorted);
     }
+
+    @Test
+    public void mainMethodDoesNotThrowAnyExceptions() {
+        main(new String[0]);
+    }
 }
