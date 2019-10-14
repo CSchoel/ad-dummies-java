@@ -40,7 +40,7 @@ public class E02MaxReachableAdjacencyList {
             List<Vertex> result = new ArrayList<>();
             for (Vertex w: v.adjacent) {
                 if (!visited.contains(w)) {
-                    result.addAll(reachList(w));
+                    result.addAll(reachList(w, visited));
                 }
             }
             return result;
