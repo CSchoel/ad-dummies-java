@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-\[nothing\]
+* tests for examples 2.6.*
 
 ### Changed
 
