@@ -19,7 +19,7 @@ import java.util.List;
  */
 public class E02MaxReachableAdjacencyList {
     public static class Vertex {
-        private String name;
+        public String name;
         private List<Vertex> adjacent;
         public Vertex(String name, List<Vertex> adjacent) {
             this.name = name;
