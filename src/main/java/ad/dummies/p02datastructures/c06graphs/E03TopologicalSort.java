@@ -78,7 +78,7 @@ public class E03TopologicalSort {
         }
 
         public List<Edge> incomingEdges(Vertex v) {
-            // FIXME: error in set notation in book
+            //FIXME: error in set notation in book
             // wrong:   {(x, v) | x \in V}
             // correct: {(x, v) \in E | x \in V}
             return edges.stream().filter(e -> e.to == v).collect(Collectors.toList());
