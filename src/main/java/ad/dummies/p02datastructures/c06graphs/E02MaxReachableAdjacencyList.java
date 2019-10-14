@@ -1,8 +1,6 @@
 package ad.dummies.p02datastructures.c06graphs;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 
 /**
  * <p>Example from the german book "Algorithms and data structures for
@@ -34,10 +32,10 @@ public class E02MaxReachableAdjacencyList {
         }
 
         public List<Vertex> reachList(Vertex v) {
-            return reachList(v, new ArrayList<>());
+            return reachList(v, new HashSet<>());
         }
 
-        public List<Vertex> reachList(Vertex v, List<Vertex> visited) {
+        public List<Vertex> reachList(Vertex v, Set<Vertex> visited) {
             visited.add(v);
             List<Vertex> result = new ArrayList<>();
             for (Vertex w: v.adjacent) {
