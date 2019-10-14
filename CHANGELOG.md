@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* tests for examples 2.6.*
+\[nothing\]
 
 ### Changed
 
@@ -17,6 +17,20 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ### Fixed
 
 \[nothing\]
+
+## \[0.6.0\]
+
+### Added
+
+* tests for examples 2.6.*
+
+### Changed
+
+* Example 2.6.2: name of vertex should be public
+
+### Fixed
+
+* Example 2.6.2: `reachList` should use `Set` instead of `List` and propagate accumulator
 
 ## \[0.5.1\]
 
