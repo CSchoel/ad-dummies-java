@@ -8,11 +8,26 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* tests for examples 2.5.1 to 2.5.3
+\[nothing\]
+
+### Changed
+
+\[nothing\]
+
+### Fixed
+
+\[nothing\]
+
+## \[0.5.1\]
+
+### Added
+
+* tests for examples 2.5.*
 
 ### Changed
 
 * Example 2.5.1: toBTree now produces left-heavy tree if list has size 2
+* Example 2.5.6: evalNodesIter should have been public
 
 ### Fixed
 
