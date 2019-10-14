@@ -203,7 +203,7 @@ public class E06ExpressionTree {
         ));
     }
 
-    private static int evalNodesIter(List<ExpNode> nodes) {
+    public static int evalNodesIter(List<ExpNode> nodes) {
         Stack<Integer> stack = new EmptyStack<>();
 
         while(!nodes.isEmpty()) {
