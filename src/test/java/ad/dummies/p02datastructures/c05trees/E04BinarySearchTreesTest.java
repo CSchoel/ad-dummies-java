@@ -55,6 +55,14 @@ class E04BinarySearchTreesTest {
     }
 
     @Test
+    public void insertIOfDuplicateIsIgnored() {
+        Map<String, Integer> m = new Map<>();
+        m.insertI("Antonelli", 1);
+        m.insertI("Antonelli", 2);
+        assertEquals(1, m.lookup("Antonelli"));
+    }
+
+    @Test
     public void insertFOfOneItemAllowsToFindThisItemWithLookup() {
         Map<String, Integer> m = new Map<>();
         m = m.insertF("Foo", 17);
@@ -83,6 +91,14 @@ class E04BinarySearchTreesTest {
         assertEquals(4, m.lookup("Meltzer"));
         assertEquals(5, m.lookup("Spence"));
         assertEquals(6, m.lookup("Teitelbaum"));
+    }
+
+    @Test
+    public void insertFOfDuplicateIsIgnored() {
+        Map<String, Integer> m = new Map<>();
+        m = m.insertF("Antonelli", 1);
+        m = m.insertF("Antonelli", 2);
+        assertEquals(1, m.lookup("Antonelli"));
     }
 
 
