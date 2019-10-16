@@ -4,7 +4,6 @@ import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestMethodOrder;
 
-import static ad.dummies.p02datastructures.c05trees.E03BreadthFirstTraversal.main;
 import static org.junit.jupiter.api.Assertions.*;
 import static ad.dummies.p02datastructures.c05trees.E04BinarySearchTrees.*;
 
