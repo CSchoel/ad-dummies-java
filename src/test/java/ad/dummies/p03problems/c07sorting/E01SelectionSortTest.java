@@ -24,6 +24,8 @@ import static ad.dummies.p03problems.c07sorting.E01SelectionSort.*;
 @TestMethodOrder(MethodOrderer.Alphanumeric.class)
 class E01SelectionSortTest {
 
+    //TODO implement actual unit tests
+
     @Test
     public void mainMethodDoesNotThrowAnyExceptions() {
         main(new String[0]);

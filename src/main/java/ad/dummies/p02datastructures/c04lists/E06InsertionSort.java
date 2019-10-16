@@ -177,7 +177,6 @@ public class E06InsertionSort {
         System.out.printf(" insertionSortI: %s\n", Arrays.toString(sorted));
         sorted = Arrays.copyOf(data, data.length);
         System.out.printf(" insertionSortF: %s\n", Arrays.toString(insertionSortF(sorted)));
-        // TODO: result is incorrect
         System.out.printf("insertionSortFA: %s\n", Arrays.toString(insertionSortFA(data)));
         IntList dataL = new Nil();
         for(int i = data.length - 1; i >= 0; i--) { dataL = new Cons(data[i], dataL); }
