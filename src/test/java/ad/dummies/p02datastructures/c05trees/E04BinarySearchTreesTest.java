@@ -40,12 +40,12 @@ class E04BinarySearchTreesTest {
     @Test
     public void insertIOfSixItemsAllowsToFindEachItemWithLookup() {
         Map<String, Integer> m = new Map<>();
-        m.insertI("Antonelli", 1);
-        m.insertI("Bartik", 2);
         m.insertI("Holberton", 3);
+        m.insertI("Antonelli", 1);
         m.insertI("Meltzer", 4);
-        m.insertI("Spence", 5);
+        m.insertI("Bartik", 2);
         m.insertI("Teitelbaum", 6);
+        m.insertI("Spence", 5);
         assertEquals(1, m.lookup("Antonelli"));
         assertEquals(2, m.lookup("Bartik"));
         assertEquals(3, m.lookup("Holberton"));
@@ -71,12 +71,12 @@ class E04BinarySearchTreesTest {
     @Test
     public void insertFOfSixItemsAllowsToFindEachItemWithLookup() {
         Map<String, Integer> m = new Map<>();
-        m = m.insertF("Antonelli", 1);
-        m = m.insertF("Bartik", 2);
         m = m.insertF("Holberton", 3);
+        m = m.insertF("Antonelli", 1);
         m = m.insertF("Meltzer", 4);
-        m = m.insertF("Spence", 5);
+        m = m.insertF("Bartik", 2);
         m = m.insertF("Teitelbaum", 6);
+        m = m.insertF("Spence", 5);
         assertEquals(1, m.lookup("Antonelli"));
         assertEquals(2, m.lookup("Bartik"));
         assertEquals(3, m.lookup("Holberton"));
