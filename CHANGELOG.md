@@ -8,15 +8,15 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-\[nothing\]
+* Example 2.5.4: test for duplicate inserts
 
 ### Changed
 
-\[nothing\]
+* Example 2.5.4: changes order of inserts in test to get better balanced tree and better code coverage
 
 ### Fixed
 
-\[nothing\]
+* Example 2.5.4: wrong main method was tested
 
 ## \[0.6.0\]
 
