@@ -48,7 +48,7 @@ public class E03QuickSort {
         int m = l;
         for(int i = l; i < r; i++) { // move everything but the pivot element
             assert allLeq(a, c, pivot, 0, m-1): "loop invariant: elements left of m are <= pivot";
-            assert allGeq(a, c, pivot, m, i): "loop invariant: elements between m and i are >= pivot";
+            assert allGeq(a, c, pivot, m, i - 1): "loop invariant: elements between m and i are >= pivot";
             if (c.compare(a[i], pivot) < 0) {
                 swap(a, i, m);
                 m++;
