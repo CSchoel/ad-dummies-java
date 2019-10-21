@@ -21,12 +21,43 @@ import java.util.concurrent.TimeUnit;
  */
 @BenchmarkMode(Mode.AverageTime)
 @OutputTimeUnit(TimeUnit.MICROSECONDS)
-@Fork(1) // execute each benchmark on it's own JVM
+// we need to increase the stack size, because we need O(n) stack space in worst case
+@Fork(value = 1, jvmArgsAppend = "-Xss512m") // execute each benchmark on it's own JVM
 @Warmup(iterations = 2, time = 100, timeUnit = TimeUnit.MILLISECONDS)
 @Measurement(iterations = 5, time = 100, timeUnit = TimeUnit.MILLISECONDS)
 public class E03QuickSortBenchmark {
     @State(Scope.Thread)
-    public static class SortSetup {
+    public static class DescendingSetup {
+        @Param({"10", "100", "1000", "10000"})
+        private int length;
+        private Integer[] data;
+
+        @Setup
+        public void setup() {
+            data = new Integer[length];
+            for(int i = 0; i < data.length; i++) {
+                data[i] = data.length - i;
+            }
+        }
+    }
+
+    @State(Scope.Thread)
+    public static class AscendingSetup {
+        @Param({"10", "100", "1000", "10000"})
+        private int length;
+        private Integer[] data;
+
+        @Setup
+        public void setup() {
+            data = new Integer[length];
+            for(int i = 0; i < data.length; i++) {
+                data[i] = i;
+            }
+        }
+    }
+
+    @State(Scope.Thread)
+    public static class RandomSetup {
         @Param({"10", "100", "1000", "10000"})
         private int length;
         private Integer[] data;
@@ -40,8 +71,41 @@ public class E03QuickSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] mergeSortWorstRandom(SortSetup state) {
+    public Integer[] quickSortFixedPivotDescending(DescendingSetup state) {
         E03QuickSort.quickSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] quickSortFixedPivotAscending(AscendingSetup state) {
+        E03QuickSort.quickSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] quickSortFixedPivotRandom(AscendingSetup state) {
+        E03QuickSort.quickSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] quickSortRandomPivotDescending(DescendingSetup state) {
+        Random r = new Random();
+        E03QuickSort.quickSort(state.data, (a, li, ri) -> r.nextInt(ri - li + 1) + li);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] quickSortRandomPivotAscending(AscendingSetup state) {
+        Random r = new Random();
+        E03QuickSort.quickSort(state.data, (a, li, ri) -> r.nextInt(ri - li + 1) + li);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] quickSortRandomPivotRandom(AscendingSetup state) {
+        Random r = new Random();
+        E03QuickSort.quickSort(state.data, (a, li, ri) -> r.nextInt(ri - li + 1) + li);
         return state.data;
     }
 }

@@ -2,6 +2,7 @@ package ad.dummies.p03problems.c07sorting;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -26,7 +27,7 @@ import java.util.concurrent.TimeUnit;
 public class E01SelectionSortBenchmark {
 
     @State(Scope.Thread)
-    public static class SortSetup {
+    public static class DescendingSetup {
         @Param({"10", "100", "1000", "10000"})
         private int length;
         private Integer[] data;
@@ -40,8 +41,49 @@ public class E01SelectionSortBenchmark {
         }
     }
 
+    @State(Scope.Thread)
+    public static class AscendingSetup {
+        @Param({"10", "100", "1000", "10000"})
+        private int length;
+        private Integer[] data;
+
+        @Setup
+        public void setup() {
+            data = new Integer[length];
+            for(int i = 0; i < data.length; i++) {
+                data[i] = i;
+            }
+        }
+    }
+
+    @State(Scope.Thread)
+    public static class RandomSetup {
+        @Param({"10", "100", "1000", "10000"})
+        private int length;
+        private Integer[] data;
+
+        @Setup
+        public void setup() {
+            data = new Random(667)
+                    .ints(length, -length/10, length/10)
+                    .boxed().toArray(Integer[]::new);
+        }
+    }
+
     @Benchmark
-    public Integer[] selectionSortWorstDescending(SortSetup state) {
+    public Integer[] selectionSortDescending(DescendingSetup state) {
+        E01SelectionSort.selectionSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] selectionSortAscending(AscendingSetup state) {
+        E01SelectionSort.selectionSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] selectionSortRandom(AscendingSetup state) {
         E01SelectionSort.selectionSort(state.data);
         return state.data;
     }

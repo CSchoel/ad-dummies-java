@@ -26,7 +26,37 @@ import java.util.concurrent.TimeUnit;
 @Measurement(iterations = 5, time = 100, timeUnit = TimeUnit.MILLISECONDS)
 public class E02MergeSortBenchmark {
     @State(Scope.Thread)
-    public static class SortSetup {
+    public static class DescendingSetup {
+        @Param({"10", "100", "1000", "10000"})
+        private int length;
+        private Integer[] data;
+
+        @Setup
+        public void setup() {
+            data = new Integer[length];
+            for(int i = 0; i < data.length; i++) {
+                data[i] = data.length - i;
+            }
+        }
+    }
+
+    @State(Scope.Thread)
+    public static class AscendingSetup {
+        @Param({"10", "100", "1000", "10000"})
+        private int length;
+        private Integer[] data;
+
+        @Setup
+        public void setup() {
+            data = new Integer[length];
+            for(int i = 0; i < data.length; i++) {
+                data[i] = i;
+            }
+        }
+    }
+
+    @State(Scope.Thread)
+    public static class RandomSetup {
         @Param({"10", "100", "1000", "10000"})
         private int length;
         private Integer[] data;
@@ -40,7 +70,19 @@ public class E02MergeSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] mergeSortWorstRandom(SortSetup state) {
+    public Integer[] mergeSortDescending(DescendingSetup state) {
+        E02MergeSort.mergeSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] mergeSortAscending(AscendingSetup state) {
+        E02MergeSort.mergeSort(state.data);
+        return state.data;
+    }
+
+    @Benchmark
+    public Integer[] mergeSortRandom(AscendingSetup state) {
         E02MergeSort.mergeSort(state.data);
         return state.data;
     }
