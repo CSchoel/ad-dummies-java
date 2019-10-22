@@ -88,7 +88,7 @@ public class E04HeapSort {
         }
 
         private boolean ancestorsAreSmallerOrEqual(int i) {
-            for(int ci = i; ci > 0; ci = parent(i)) {
+            for(int ci = i; ci > 1; ci = parent(i)) {
                 if (c.compare(a[parent(ci)], a[ci]) > 0) {
                     return false;
                 }
