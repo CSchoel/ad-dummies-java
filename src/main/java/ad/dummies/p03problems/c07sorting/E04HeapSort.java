@@ -100,6 +100,7 @@ public class E04HeapSort {
             assert hasHeapProperty(0): "class invariant pre";
             E x = a[0];
             a[0] = a[size - 1];
+            size--;
             int i = 0;
             int m = 0;
             do {
@@ -109,7 +110,6 @@ public class E04HeapSort {
                 swap(i, m);
             } while (m != i);
             assert hasHeapProperty(0): "class invariant post";
-            size--;
             return x;
         }
     }
