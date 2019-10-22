@@ -165,8 +165,11 @@ public class E04HeapSort {
         // can rely on the internal implementation detail that ArrayMaxHeap
         // removes elements from the end of its internal array.
         ArrayMaxHeap<E> h = new ArrayMaxHeap<>(c, a);
+        for(int i = 0; i < a.length; i++) {
+            h.push(a[i]); // works because a[i..length-1] is still unused
+        }
         for(int i = a.length - 1; i >= 0; i--) {
-            a[i] = h.extractMax();
+            a[i] = h.extractMax(); // works because a[i..length-1] has been freed
         }
     }
 
