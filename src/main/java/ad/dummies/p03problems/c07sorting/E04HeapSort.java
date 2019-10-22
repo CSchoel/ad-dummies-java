@@ -78,10 +78,10 @@ public class E04HeapSort {
         private int argmin(int i, int j, int k) {
             //FIXME: book does not check last element ('<n' should be '<=n')
             int m = i;
-            if (c.compare(a[j], a[m]) < 0) {
+            if (j < size && c.compare(a[j], a[m]) < 0) {
                 m = j;
             }
-            if (c.compare(a[k], a[m]) < 0) {
+            if (k < size && c.compare(a[k], a[m]) < 0) {
                 m = j;
             }
             return m;
