@@ -53,8 +53,8 @@ public class E04HeapSort {
                 return false;
             }
             boolean res = true;
-            if (l < 0) { res = hasHeapProperty(l); }
-            if (r < 0) { res = res && hasHeapProperty(r); }
+            if (l < size) { res = hasHeapProperty(l); }
+            if (r < size) { res = res && hasHeapProperty(r); }
             return res;
         }
 
