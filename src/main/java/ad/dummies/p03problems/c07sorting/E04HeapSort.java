@@ -19,10 +19,7 @@ public class E04HeapSort {
     public static class ArrayMinHeap<E> implements MinHeap<E> {
         private Comparator<E> c;
         private E[] a;
-        // Class invariant (heap property):
-        // c.compare(a[i], a[2*i + 1]) <= 0 for all i where 2*i + 1 < size
-        // and
-        // c.compare(a[i], a[2*i + 2]) <= 0 for all i where 2*i + 2 < size
+        // Class invariant: hasHeapProperty(0)
         private int size;
         public ArrayMinHeap(Comparator<E> c, Supplier<E[]> agen) {
             this.c = c;
@@ -63,6 +60,7 @@ public class E04HeapSort {
 
         @Override
         public void push(E el) {
+            assert hasHeapProperty(0): "class invariant pre";
             a[size] = el;
             size++;
             int p = size - 1;
@@ -73,6 +71,7 @@ public class E04HeapSort {
                 i = p;
                 p = parent(i);
             } while (c.compare(a[i], a[p]) < 0);
+            assert hasHeapProperty(0): "class invariant post";
         }
 
         private int argmin(int i, int j, int k) {
@@ -98,6 +97,7 @@ public class E04HeapSort {
 
         @Override
         public E extractMin() {
+            assert hasHeapProperty(0): "class invariant pre";
             E x = a[0];
             a[0] = a[size - 1];
             int i = 0;
@@ -108,6 +108,7 @@ public class E04HeapSort {
                 m = argmin(i, leftChild(i), rightChild(i));
                 swap(i, m);
             } while (m != i);
+            assert hasHeapProperty(0): "class invariant post";
             size--;
             return x;
         }
