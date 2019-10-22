@@ -99,7 +99,7 @@ public class E04HeapSort {
         @Override
         public E extractMin() {
             E x = a[0];
-            a[1] = a[size - 1];
+            a[0] = a[size - 1];
             int i = 0;
             int m = 0;
             do {
