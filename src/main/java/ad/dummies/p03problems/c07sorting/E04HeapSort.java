@@ -19,7 +19,11 @@ public class E04HeapSort {
     public static class ArrayMinHeap<E> implements MinHeap<E> {
         private Comparator<E> c;
         private E[] a;
-        int size;
+        // Class invariant (heap property):
+        // c.compare(a[i], a[2*i]) <= 0 for all i where 2*i < size
+        // and
+        // c.compare(a[i], a[2*i + 1]) <= 0 for all i where 2*i + 1 < size
+        private int size;
         public ArrayMinHeap(Comparator<E> c, Supplier<E[]> agen) {
             this.c = c;
             this.a = agen.get();
