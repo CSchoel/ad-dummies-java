@@ -20,9 +20,9 @@ public class E04HeapSort {
         private Comparator<E> c;
         private E[] a;
         // Class invariant (heap property):
-        // c.compare(a[i], a[2*i]) <= 0 for all i where 2*i < size
-        // and
         // c.compare(a[i], a[2*i + 1]) <= 0 for all i where 2*i + 1 < size
+        // and
+        // c.compare(a[i], a[2*i + 2]) <= 0 for all i where 2*i + 2 < size
         private int size;
         public ArrayMinHeap(Comparator<E> c, Supplier<E[]> agen) {
             this.c = c;
@@ -31,15 +31,15 @@ public class E04HeapSort {
         }
 
         private int parent(int i) {
-            return i / 2;
+            return (i - 1) / 2;
         }
 
         private int leftChild(int i) {
-            return 2 * i;
+            return 2 * i + 1;
         }
 
         private int rightChild(int i) {
-            return 2 * i + 1;
+            return 2 * i + 2;
         }
 
         private void swap(int i, int j) {
