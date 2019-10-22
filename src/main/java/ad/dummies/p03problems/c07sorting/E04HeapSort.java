@@ -81,7 +81,7 @@ public class E04HeapSort {
                 m = j;
             }
             if (k < size && c.compare(a[k], a[m]) < 0) {
-                m = j;
+                m = k;
             }
             return m;
         }
