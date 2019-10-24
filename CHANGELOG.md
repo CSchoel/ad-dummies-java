@@ -8,8 +8,22 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 
-* Examples 3.7.1 to 3.7.2
-* Benchmarks for examples 3.7.1 to 3.7.2
+\[nothing\]
+
+### Changed
+
+\[nothing\]
+
+### Fixed
+
+\[nothing\]
+
+## \[0.6.1\]
+
+### Added
+
+* Examples 3.7.*
+* Benchmarks for examples 3.7.*
 * Example 2.5.4: test for duplicate inserts
 
 ### Changed
