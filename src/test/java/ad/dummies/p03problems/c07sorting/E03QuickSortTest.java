@@ -1,6 +1,8 @@
 package ad.dummies.p03problems.c07sorting;
 
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 
 import static org.junit.jupiter.api.Assertions.*;
 import static ad.dummies.p03problems.c07sorting.E03QuickSort.*;
@@ -19,6 +21,7 @@ import static ad.dummies.p03problems.c07sorting.E03QuickSort.*;
  * @author Christopher Schölzel
  * @see E03QuickSort
  */
+@TestMethodOrder(MethodOrderer.Alphanumeric.class)
 class E03QuickSortTest {
 
     //TODO implement actual unit tests
