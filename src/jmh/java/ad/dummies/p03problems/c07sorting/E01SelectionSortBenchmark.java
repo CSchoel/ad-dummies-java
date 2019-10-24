@@ -83,7 +83,7 @@ public class E01SelectionSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] selectionSortRandom(AscendingSetup state) {
+    public Integer[] selectionSortRandom(RandomSetup state) {
         E01SelectionSort.selectionSort(state.data);
         return state.data;
     }

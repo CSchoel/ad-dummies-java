@@ -83,7 +83,7 @@ public class E03QuickSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] quickSortFixedPivotRandom(AscendingSetup state) {
+    public Integer[] quickSortFixedPivotRandom(RandomSetup state) {
         E03QuickSort.quickSort(state.data);
         return state.data;
     }
@@ -103,7 +103,7 @@ public class E03QuickSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] quickSortRandomPivotRandom(AscendingSetup state) {
+    public Integer[] quickSortRandomPivotRandom(RandomSetup state) {
         Random r = new Random();
         E03QuickSort.quickSort(state.data, (a, li, ri) -> r.nextInt(ri - li + 1) + li);
         return state.data;

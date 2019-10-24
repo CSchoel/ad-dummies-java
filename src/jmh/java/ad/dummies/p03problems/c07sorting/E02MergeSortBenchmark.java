@@ -82,7 +82,7 @@ public class E02MergeSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] mergeSortRandom(AscendingSetup state) {
+    public Integer[] mergeSortRandom(RandomSetup state) {
         E02MergeSort.mergeSort(state.data);
         return state.data;
     }

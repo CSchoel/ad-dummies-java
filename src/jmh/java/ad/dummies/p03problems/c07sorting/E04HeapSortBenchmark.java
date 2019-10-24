@@ -83,7 +83,7 @@ public class E04HeapSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] heapSortRandom(AscendingSetup state) {
+    public Integer[] heapSortRandom(RandomSetup state) {
         E04HeapSort.heapSort(state.data);
         return state.data;
     }
@@ -101,7 +101,7 @@ public class E04HeapSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] priorityQueueSortRandom(AscendingSetup state) {
+    public Integer[] priorityQueueSortRandom(RandomSetup state) {
         E04HeapSort.priorityQueueSort(state.data);
         return state.data;
     }

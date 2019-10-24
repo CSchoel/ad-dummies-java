@@ -82,7 +82,7 @@ public class E09InsertionSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] insertionSortRandom(AscendingSetup state) {
+    public Integer[] insertionSortRandom(RandomSetup state) {
         E09InsertionSort.insertionSort(state.data);
         return state.data;
     }

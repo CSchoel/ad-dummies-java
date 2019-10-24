@@ -82,7 +82,7 @@ public class E05CountingSortBenchmark {
     }
 
     @Benchmark
-    public int[] countingSortRandom(AscendingSetup state) {
+    public int[] countingSortRandom(RandomSetup state) {
         E05CountingSort.countingSort(state.data);
         return state.data;
     }

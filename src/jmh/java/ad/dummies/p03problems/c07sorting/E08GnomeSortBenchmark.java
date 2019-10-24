@@ -82,7 +82,7 @@ public class E08GnomeSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] gnomeSortRandom(AscendingSetup state) {
+    public Integer[] gnomeSortRandom(RandomSetup state) {
         E08GnomeSort.gnomeSort(state.data);
         return state.data;
     }

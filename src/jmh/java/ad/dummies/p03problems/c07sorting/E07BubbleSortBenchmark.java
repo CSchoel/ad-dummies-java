@@ -82,7 +82,7 @@ public class E07BubbleSortBenchmark {
     }
 
     @Benchmark
-    public Integer[] bubbleSortRandom(AscendingSetup state) {
+    public Integer[] bubbleSortRandom(RandomSetup state) {
         E07BubbleSort.bubbleSort(state.data);
         return state.data;
     }

@@ -82,7 +82,7 @@ public class E06RadixSortBenchmark {
     }
 
     @Benchmark
-    public int[] radixSortR200Random(AscendingSetup state) {
+    public int[] radixSortR200Random(RandomSetup state) {
         E06RadixSort.radixSort(state.data, new E06RadixSort.NaiveRadixSetup(200));
         return state.data;
     }
@@ -100,7 +100,7 @@ public class E06RadixSortBenchmark {
     }
 
     @Benchmark
-    public int[] radixSortR256Random(AscendingSetup state) {
+    public int[] radixSortR256Random(RandomSetup state) {
         E06RadixSort.radixSort(state.data, new E06RadixSort.BinaryRadixSetup(8));
         return state.data;
     }
