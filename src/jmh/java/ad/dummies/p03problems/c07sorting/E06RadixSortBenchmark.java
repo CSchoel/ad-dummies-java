@@ -2,6 +2,7 @@ package ad.dummies.p03problems.c07sorting;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,10 @@ public class E06RadixSortBenchmark {
                 data[i] = data.length - i;
             }
         }
+
+        public int[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -53,6 +58,10 @@ public class E06RadixSortBenchmark {
                 data[i] = i;
             }
         }
+
+        public int[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -64,44 +73,54 @@ public class E06RadixSortBenchmark {
         @Setup
         public void setup() {
             data = new Random(667)
-                    .ints(length, -length/10, length/10)
+                    .ints(length, 0, length/5)
                     .toArray();
+        }
+
+        public int[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
         }
     }
 
     @Benchmark
     public int[] radixSortR200Descending(DescendingSetup state) {
-        E06RadixSort.radixSort(state.data, new E06RadixSort.NaiveRadixSetup(200));
-        return state.data;
+        int[] a = state.obtainCopy();
+        E06RadixSort.radixSort(a, new E06RadixSort.NaiveRadixSetup(200));
+        return a;
     }
 
     @Benchmark
     public int[] radixSortR200Ascending(AscendingSetup state) {
-        E06RadixSort.radixSort(state.data, new E06RadixSort.NaiveRadixSetup(200));
-        return state.data;
+        int[] a = state.obtainCopy();
+        E06RadixSort.radixSort(a, new E06RadixSort.NaiveRadixSetup(200));
+        return a;
     }
 
     @Benchmark
     public int[] radixSortR200Random(RandomSetup state) {
-        E06RadixSort.radixSort(state.data, new E06RadixSort.NaiveRadixSetup(200));
-        return state.data;
+        int[] a = state.obtainCopy();
+        E06RadixSort.radixSort(a, new E06RadixSort.NaiveRadixSetup(200));
+        return a;
     }
 
     @Benchmark
     public int[] radixSortR256Descending(DescendingSetup state) {
-        E06RadixSort.radixSort(state.data, new E06RadixSort.BinaryRadixSetup(8));
-        return state.data;
+        int[] a = state.obtainCopy();
+        E06RadixSort.radixSort(a, new E06RadixSort.BinaryRadixSetup(8));
+        return a;
     }
 
     @Benchmark
     public int[] radixSortR256Ascending(AscendingSetup state) {
-        E06RadixSort.radixSort(state.data, new E06RadixSort.BinaryRadixSetup(8));
-        return state.data;
+        int[] a = state.obtainCopy();
+        E06RadixSort.radixSort(a, new E06RadixSort.BinaryRadixSetup(8));
+        return a;
     }
 
     @Benchmark
     public int[] radixSortR256Random(RandomSetup state) {
-        E06RadixSort.radixSort(state.data, new E06RadixSort.BinaryRadixSetup(8));
-        return state.data;
+        int[] a = state.obtainCopy();
+        E06RadixSort.radixSort(a, new E06RadixSort.BinaryRadixSetup(8));
+        return a;
     }
 }

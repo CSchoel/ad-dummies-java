@@ -2,6 +2,7 @@ package ad.dummies.p03problems.c07sorting;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -39,6 +40,10 @@ public class E04HeapSortBenchmark {
                 data[i] = data.length - i;
             }
         }
+
+        public Integer[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -54,6 +59,10 @@ public class E04HeapSortBenchmark {
                 data[i] = i;
             }
         }
+
+        public Integer[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -68,41 +77,51 @@ public class E04HeapSortBenchmark {
                     .ints(length, -length/10, length/10)
                     .boxed().toArray(Integer[]::new);
         }
+
+        public Integer[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @Benchmark
     public Integer[] heapSortDescending(DescendingSetup state) {
-        E04HeapSort.heapSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E04HeapSort.heapSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] heapSortAscending(AscendingSetup state) {
-        E04HeapSort.heapSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E04HeapSort.heapSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] heapSortRandom(RandomSetup state) {
-        E04HeapSort.heapSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E04HeapSort.heapSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] priorityQueueSortDescending(DescendingSetup state) {
-        E04HeapSort.priorityQueueSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E04HeapSort.priorityQueueSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] priorityQueueSortAscending(AscendingSetup state) {
-        E04HeapSort.priorityQueueSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E04HeapSort.priorityQueueSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] priorityQueueSortRandom(RandomSetup state) {
-        E04HeapSort.priorityQueueSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E04HeapSort.priorityQueueSort(a);
+        return a;
     }
 }

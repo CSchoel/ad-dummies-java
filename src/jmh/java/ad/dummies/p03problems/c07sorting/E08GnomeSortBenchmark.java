@@ -2,6 +2,7 @@ package ad.dummies.p03problems.c07sorting;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,10 @@ public class E08GnomeSortBenchmark {
                 data[i] = data.length - i;
             }
         }
+
+        public Integer[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -53,6 +58,10 @@ public class E08GnomeSortBenchmark {
                 data[i] = i;
             }
         }
+
+        public Integer[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -67,23 +76,30 @@ public class E08GnomeSortBenchmark {
                     .ints(length, -length/10, length/10)
                     .boxed().toArray(Integer[]::new);
         }
+
+        public Integer[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @Benchmark
     public Integer[] gnomeSortDescending(DescendingSetup state) {
-        E08GnomeSort.gnomeSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E08GnomeSort.gnomeSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] gnomeSortAscending(AscendingSetup state) {
-        E08GnomeSort.gnomeSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E08GnomeSort.gnomeSort(a);
+        return a;
     }
 
     @Benchmark
     public Integer[] gnomeSortRandom(RandomSetup state) {
-        E08GnomeSort.gnomeSort(state.data);
-        return state.data;
+        Integer[] a = state.obtainCopy();
+        E08GnomeSort.gnomeSort(a);
+        return a;
     }
 }

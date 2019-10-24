@@ -2,6 +2,7 @@ package ad.dummies.p03problems.c07sorting;
 
 import org.openjdk.jmh.annotations.*;
 
+import java.util.Arrays;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -38,6 +39,10 @@ public class E05CountingSortBenchmark {
                 data[i] = data.length - i;
             }
         }
+
+        public int[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -53,6 +58,10 @@ public class E05CountingSortBenchmark {
                 data[i] = i;
             }
         }
+
+        public int[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
+        }
     }
 
     @State(Scope.Thread)
@@ -64,26 +73,33 @@ public class E05CountingSortBenchmark {
         @Setup
         public void setup() {
             data = new Random(667)
-                    .ints(length, -length/10, length/10)
+                    .ints(length, 0, length/5)
                     .toArray();
+        }
+
+        public int[] obtainCopy() {
+            return Arrays.copyOf(data, data.length);
         }
     }
 
     @Benchmark
     public int[] countingSortDescending(DescendingSetup state) {
-        E05CountingSort.countingSort(state.data);
-        return state.data;
+        int[] a = state.obtainCopy();
+        E05CountingSort.countingSort(a);
+        return a;
     }
 
     @Benchmark
     public int[] countingSortAscending(AscendingSetup state) {
-        E05CountingSort.countingSort(state.data);
-        return state.data;
+        int[] a = state.obtainCopy();
+        E05CountingSort.countingSort(a);
+        return a;
     }
 
     @Benchmark
     public int[] countingSortRandom(RandomSetup state) {
-        E05CountingSort.countingSort(state.data);
-        return state.data;
+        int[] a = state.obtainCopy();
+        E05CountingSort.countingSort(a);
+        return a;
     }
 }
