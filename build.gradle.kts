@@ -10,6 +10,7 @@ plugins {
     // Apply the java-library plugin to add support for Java Library
     `java-library`
     `jacoco`
+    id("org.sonarqube") version "2.8"
 }
 
 repositories {
@@ -93,4 +94,11 @@ val jacocoTestReport by tasks.getting(JacocoReport::class) {
         html.isEnabled = false
     }
     dependsOn(test)
+}
+
+sonarqube {
+    properties {
+        property("sonar.projectKey", "CSchoel_ad-dummies-java")
+        property("sonar.organization", "cschoel")
+    }
 }

@@ -2,6 +2,12 @@ language: java
 dist: xenial
 jdk: openjdk12
 
+addons:
+  sonarcloud:
+    organization: "cschoel"
+    token:
+      secure: "cfnx9a4SJVUS2Vr75yZfZOt0Joaj+eO7CVPnh+Crr5RfUxhvR+MeBZhu9RnHFObWywGwlbuHI+jdfdAlCwI395qEnsv4EE/LjPIXRpVY2NoFonhCp/rNRK+FRTGMG2MMcvkmJ96Njn7Q2Qa/3xe5yGNZTDmX+/oIh3k7XAOmoBAI2ZX9wi5TkGJ+6DZ3Gq/IPL9MLHm76ZLa3uYwqwg9tfVNYpTsHJIwrJoHSxVf5fBRu4cVwAkVp9JydY6kXkHkxlqW88W1ebBRnLM/hVWfk0L7G7835XbDsTev7SQCLVdjtKbEivD+45lcnqZ8k8EVLyatlNxOPYDCnVaxddr0UxaPgXirya6QLIo+rxqA4b4xG+LRNcmpfzLXL+WK2Vp13vgyU9CUNn9rX2C062q1Ociw9M6lMKB79l6yCI09b8ThE5q78VMszkmAww+7HW3k5ZeYZDGpnEUc/9qIMP8Ar/5ZokLqvO584yb3pVxpz04C4DJDFeJiycDnB5hKsxR3t3CcL5SiyFaLYlo8BUq/Ko7arqUkqzNGQl8qVy+UQrFPj2UdnnJBkt529fuQMpOoxgtsK3uEo7wNpymHTO3mzxFaOl5AJjIZkUR5+/Bz/Fi+vcHJ1A0OhY26mCMyErsNAqy5KP+z2EFV2TmkH+0aF1J5UFcXbLDYkhezeEDaGCQ="
+
 env:
   secure: eRkzEzsLmOkW57hZMnEhcHE+Eq8vH4vjDIjeBbjONv62NC+u5W3y71Kyc91lQoVx43dUsrb+AwJ+iHTaP96lSDbi1p2ayDZDlILQ1+tLI2V3s44bcKEYVhNXMoFNBkukgyLVQGjqBaV5+Qsvn8Mb7fFAaI0L8IYY8I8CmFhDI9Dage/6qOLX+9Ghtr6ltJfqRuQjgFUWcV3VtNmMGnsaSKlPlfc/vceE5A1fXDCY2b9uIqb+Z4m6AZbBKzFCJUU+/lc3fO/LQOsdCT/Nt96LzaHiY2RcVm8OwBBlxOCLclde8+Kk4KATOk2AvmPBMS4ta3grqW3i+KxDLZxs8xkrWn7sPtYtlSnt6jy7JpjV11EDuvR8D+pgW1Sur3GEyniENRQNGWCJ7FSRxCpNljcrKgFmSgVRi8fOhsfzSKcTT2HCApZ2Dzt0tTCrTzgBUXKLjIvfHwjQhPEUqpy3vMwWFpVGiTdsrt0STM7zkSMe0z910/aQGkYeMvokwaleDsNPuI9EuSAVJ4Id5A9ZSPjQR60E2MQXV01RQXo1MEp6KDsAk2q0cgqw8lzvm2RIBi96olKGZ3uNBZ57+iV9uHxE0oO1d6X03LtTnUoqi4VyuERyh79bvwtlB4Pqm8hPYKkfxr9FGT/3Op/scXXPIxl8bvDOlJ6bEIZks2D3B3aPXDQ=
 
@@ -9,6 +15,7 @@ install: true
 
 script:
   - ./gradlew jacocoTestReport
+  - ./gradlew sonarqube
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
