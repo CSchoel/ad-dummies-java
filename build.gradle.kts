@@ -9,7 +9,7 @@
 plugins {
     // Apply the java-library plugin to add support for Java Library
     `java-library`
-    `jacoco`
+    jacoco
     id("org.sonarqube") version "2.8"
 }
 
