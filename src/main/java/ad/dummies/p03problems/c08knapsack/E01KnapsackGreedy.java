@@ -1,8 +1,6 @@
 package ad.dummies.p03problems.c08knapsack;
 
-import java.util.ArrayList;
-import java.util.Comparator;
-import java.util.List;
+import java.util.*;
 import java.util.function.Function;
 
 /**
@@ -28,13 +26,13 @@ public class E01KnapsackGreedy {
         }
         public String toString() { return String.format("%s €|%s kg", value, weight);}
     }
-    public static List<KnapsackObject> knapsackGreedy(List<KnapsackObject> objects, double maxWeight) {
+    public static Set<KnapsackObject> knapsackGreedy(List<KnapsackObject> objects, double maxWeight) {
         return knapsackGreedy(objects, maxWeight, x-> x.value);
     }
-    public static List<KnapsackObject> knapsackGreedy(List<KnapsackObject> objects, double maxWeight, Function<KnapsackObject, Double> attractiveness) {
+    public static Set<KnapsackObject> knapsackGreedy(List<KnapsackObject> objects, double maxWeight, Function<KnapsackObject, Double> attractiveness) {
         List<KnapsackObject> sorted = new ArrayList<>(objects);
         sorted.sort(Comparator.comparing(x -> -attractiveness.apply(x)));
-        List<KnapsackObject> selected = new ArrayList<>();
+        Set<KnapsackObject> selected = new HashSet<>();
         double w = 0;
         for(int i = 0; i < sorted.size() && w + sorted.get(i).weight <= maxWeight; i++) {
             selected.add(sorted.get(i));
@@ -62,10 +60,10 @@ public class E01KnapsackGreedy {
             max = 20;
         }
         System.out.printf("Selecting %.3f kg from %s:\n", max, objects);
-        List<KnapsackObject> selected1v = knapsackGreedy(objects, max, x -> x.value);
+        Set<KnapsackObject> selected1v = knapsackGreedy(objects, max, x -> x.value);
         System.out.printf("Attractivenes = value:        %s\n", selected1v);
         System.out.printf("    Total value: %.3f\n", selected1v.stream().mapToDouble(x -> x.value).sum());
-        List<KnapsackObject> selected1a = knapsackGreedy(objects, max, x -> x.value/x.weight);
+        Set<KnapsackObject> selected1a = knapsackGreedy(objects, max, x -> x.value/x.weight);
         System.out.printf("Attractivenes = weight/value: %s\n", selected1a);
         System.out.printf("    Total value: %.3f\n", selected1a.stream().mapToDouble(x -> x.value).sum());
     }
