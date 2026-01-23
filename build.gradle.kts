@@ -16,7 +16,8 @@ plugins {
 repositories {
     // Use jcenter for resolving dependencies.
     // You can declare any Maven/Ivy/file repository here.
-    jcenter()
+    // jcenter()
+    mavenCentral()
 }
 
 
@@ -60,7 +61,7 @@ tasks {
     register("jmhVerify", type=JavaExec::class) {
         group = "benchmark"
         dependsOn("jmhClasses")
-        main = "org.openjdk.jmh.Main"
+        mainClass = "org.openjdk.jmh.Main"
         classpath = sourceSets["jmh"].runtimeClasspath
         // To enable the built-in stacktrace sampling profiler
         // args(listOf("-prof", "stack"))
@@ -70,7 +71,7 @@ tasks {
     register("jmh", type=JavaExec::class) {
         group = "benchmark"
         dependsOn("jmhClasses")
-        main = "org.openjdk.jmh.Main"
+        mainClass = "org.openjdk.jmh.Main"
         classpath = sourceSets["jmh"].runtimeClasspath
         val benchmarks = project.findProperty("benchmarks")
                 ?.toString()
@@ -90,8 +91,8 @@ tasks {
 
 val jacocoTestReport by tasks.getting(JacocoReport::class) {
     reports {
-        xml.isEnabled = true
-        html.isEnabled = false
+        xml.required = true
+        html.required = false
     }
     dependsOn(test)
 }
