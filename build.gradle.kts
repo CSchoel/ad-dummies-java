@@ -8,7 +8,7 @@
 
 plugins {
     // Apply the java-library plugin to add support for Java Library
-    `java-library`
+    java
     jacoco
     id("org.sonarqube") version "2.8"
 }
@@ -38,9 +38,12 @@ dependencies {
     "jmhAnnotationProcessor"("org.openjdk.jmh:jmh-generator-annprocess:1.21")
 }
 
-val test by tasks.getting(Test::class) {
-    // Use junit platform for unit tests
-    useJUnitPlatform()
+testing {
+    suites {
+        "test"(JvmTestSuite::class) {
+            useJUnitJupiter()
+        }
+    }
 }
 
 fun numbersToRegex(numbers: String): String {
@@ -94,7 +97,7 @@ val jacocoTestReport by tasks.getting(JacocoReport::class) {
         xml.required = true
         html.required = false
     }
-    dependsOn(test)
+    dependsOn(tasks.test)
 }
 
 sonarqube {
